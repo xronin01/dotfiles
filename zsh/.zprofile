@@ -1,1 +1,1 @@
-krabby random
+../shell/profile

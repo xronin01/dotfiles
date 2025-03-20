@@ -1,0 +1,47 @@
+## Add zsh-completions to fpath
+fpath=($ZAP_PLUGIN_DIR/zsh-completions/src $fpath)
+
+## Load tab completions for fzf-tab
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+
+setopt re_match_pcre
+
+## zsh-vi-mode config
+function zvm_config() {
+  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+  ZVM_VI_HIGHLIGHT_BACKGROUND=#313244
+  ZVM_VI_HIGHLIGHT_FOREGROUND=#cdd6f4
+}
+
+function zvm_after_init() {
+  # zvm_bindkey viins "^R" fzf-history-widget
+  zvm_bindkey viins "^R" skim-history-widget
+}
+
+plug "Aloxaf/fzf-tab"
+plug "zsh-users/zsh-completions"
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-history-substring-search"
+plug "jeffreytse/zsh-vi-mode"
+plug "hlissner/zsh-autopair"
+
+## fzf-tab config
+zstyle ':completion:*' menu no
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:*' fzf-command sk
+zstyle ':fzf-tab:*' fzf-flags --bind='enter:accept()'
+zstyle ':fzf-tab:*' use-fzf-default-opts no
+zstyle ':fzf-tab:*' switch-group '<' '>'
+
+## zsh-history-substring-search config
+bindkey "^[[B" history-substring-search-down
+bindkey "^[[A" history-substring-search-up
+bindkey -M vicmd "^[[B" history-substring-search-down
+bindkey -M vicmd "^[[A" history-substring-search-up
+bindkey -M vicmd "j" history-substring-search-down
+bindkey -M vicmd "k" history-substring-search-up
+
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=bg=#cba6f7,fg=#cdd6f4,bold
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=bg=#f38ba8,fg=#cdd6f4,bold

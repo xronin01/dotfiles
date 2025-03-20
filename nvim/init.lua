@@ -1,66 +1,30 @@
---- Bootstrap paq-nvim
-local paq_path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
-if not vim.uv.fs_stat(paq_path) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--depth=1",
-    "https://github.com/savq/paq-nvim.git",
-    paq_path,
-  })
-end
--- vim.opt.rtp:prepend(paq_path)
-vim.cmd.packadd("paq-nvim")
-
 require("options")
 require("keymaps")
-require("autocmd")
+require("autocmds")
+require("lsp")
 
-require("paq")({
-  { "savq/paq-nvim" },
-  { "nvim-neorocks/lz.n" },
+--- Rocks.nvim
+local rocks_config = {
+  rocks_path = vim.env.HOME .. "/.local/share/nvim/rocks",
+}
 
-  { "catppuccin/nvim", opt = true, as = "catppuccin" },
-  { "nvim-tree/nvim-web-devicons", opt = true },
-  { "akinsho/bufferline.nvim", opt = true },
-  { "nvim-lualine/lualine.nvim", opt = true },
-  { "prichrd/netrw.nvim", opt = true },
-  { "mikavilpas/yazi.nvim", opt = true },
-  { "ibhagwan/fzf-lua", opt = true },
-  { "lukas-reineke/indent-blankline.nvim", opt = true },
-  { "lewis6991/gitsigns.nvim", opt = true },
-  { "catgoose/nvim-colorizer.lua", opt = true },
-  { "nvim-treesitter/nvim-treesitter", opt = true, build = ":TSUpdate" },
-  { "windwp/nvim-autopairs", opt = true },
-  { "kylechui/nvim-surround", opt = true },
-  { "Saghen/blink.cmp", opt = true, branch = "v0.13.1" },
-  { "neovim/nvim-lspconfig", opt = true },
-  { "folke/lazydev.nvim", opt = true },
-  --- Luals addons
-  { "Bilal2453/luvit-meta", opt = true },
-  { "nvim-neorocks/toml-edit-lua-ls-addon", opt = true },
-  { "LelouchHe/xmake-luals-addon", opt = true },
-  { "LuaCATS/love2d", opt = true },
-  { "gonstoll/wezterm-types", opt = true },
+vim.g.rocks_nvim = rocks_config
 
-  { "rafamadriz/friendly-snippets", opt = true },
-  { "mfussenegger/nvim-dap", opt = true },
-  { "jbyuki/one-small-step-for-vimkind", opt = true },
-  { "OXY2DEV/helpview.nvim", opt = true },
-  { "OXY2DEV/markview.nvim", opt = true },
+local luarocks_path = {
+  vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
+  vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
+}
+package.path = package.path .. ";" .. table.concat(luarocks_path, ";")
 
-  -- { "nvim-neorg/neorg", opt = true },
-  -- { "nvim-neorg/lua-utils.nvim", },
-  -- { "MunifTanjim/nui.nvim", },
-  -- { "nvim-neotest/nvim-nio", },
-  -- { "pysan3/pathlib.nvim", },
-  { "nvim-lua/plenary.nvim", },
+local luarocks_cpath = {
+  vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.so"),
+  vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.so"),
+  -- Remove the dylib and dll paths if you do not need macos or windows support
+  vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.dylib"),
+  vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.dylib"),
+  vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.dll"),
+  vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.dll"),
+}
+package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
 
-  { "mrjones2014/smart-splits.nvim", opt = true },
-  { "ThePrimeagen/vim-be-good", opt = true },
-})
-
-local ok, lz = pcall(require, "lz.n")
-if ok then
-  lz.load("plugins")
-end
+vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luarocks", "rocks-5.1", "rocks.nvim", "*"))

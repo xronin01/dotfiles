@@ -1,0 +1,49 @@
+#!/usr/bin/env sh
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+# export XDG_RUNTIME_DIR="/run/user/$UID"
+
+if [ -n "$TERMUX_APP_PID" ]; then
+  # export TERMINFO="$PREFIX/share/terminfo"
+  export XDG_CONFIG_DIRS="$PREFIX/etc/xdg"
+  export XDG_DATA_DIRS="$PREFIX/share"
+  # export XDG_RUNTIME_DIR="$PREFIX/var/run/user"
+  export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session awesome"
+  # export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session emacs -mm"
+fi
+
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export COMPOSER_HOME="$XDG_DATA_HOME/composer"
+export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno"
+export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$COMPOSER_HOME/vendor/bin:$DENO_INSTALL_ROOT/bin:$XDG_DATA_HOME/bob/nvim-bin"
+
+export EDITOR=nvim
+export VISUAL=$EDITOR
+# export TERMCMD="wezterm start --always-new-process"
+export TERMCMD=alacritty
+export TERMINAL=$TERMCMD
+# export BROWSER=elinks
+export PAGER="less"
+export MANPAGER="nvim +Man!"
+
+# export BAT_THEME=ansi
+export BAT_THEME="Catppuccin Mocha"
+export BAT_STYLE="numbers,changes,header"
+
+export SKIM_DEFAULT_OPTIONS="--layout=reverse \
+--color=fg:#cdd6f4,bg:#1e1e2e,matched:#313244,matched_bg:#f2cdcd \
+--color=current:#cdd6f4,current_bg:#45475a,current_match:#1e1e2e,current_match_bg:#f5e0dc \
+--color=spinner:#a6e3a1,info:#cba6f7,prompt:#89b4fa,cursor:#f38ba8 \
+--color=selected:#eba0ac,header:#94e2d5,border:#6c7086"
+
+export FZF_DEFAULT_OPTS="--layout=reverse \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A,border:#6C7086,label:#CDD6F4"

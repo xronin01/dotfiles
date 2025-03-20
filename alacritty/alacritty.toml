@@ -1,0 +1,17 @@
+general.import = ["./catppuccin-mocha.toml"]
+
+[font]
+normal = { family = "Maple Mono NF" }
+
+[window]
+padding = { x = 2, y = 0 }
+# opacity = 0.5
+
+[scrolling]
+# history = 0
+
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+vi_mode_style = { shape = "Block" }
+blink_interval = 500
+blink_timeout = 0

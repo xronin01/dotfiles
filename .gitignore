@@ -1,7 +1,8 @@
-hilbish/.hilbish-history
 tmux/plugins/
 elinks/cookies
 elinks/bookmarks
 elinks/globhist
 elinks/gotohist
+aerc/accounts.conf
 yazi/flavors/
+yazi/plugins/

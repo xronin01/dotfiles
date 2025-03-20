@@ -1,7 +1,17 @@
 [flavor]
-use = "catppuccin-mocha"
 dark = "catppuccin-mocha"
 
+[mgr]
+cwd = { fg = "#89b4fa" }
+
+[tabs]
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[indicator]
+padding = { open = "█", close = "█" }
+
 [status]
-sep_left  = { open = "█", close = "█" }
+overall = { bg = "#181825" }
+sep_left = { open = "█", close = "█" }
 sep_right = { open = "█", close = "█" }

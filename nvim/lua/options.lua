@@ -1,37 +1,49 @@
---- Settings
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.cursorline = true
-vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
-vim.opt.mouse = "a"
-vim.opt.mousescroll = "ver:1,hor:6"
-vim.opt.mousemoveevent = true
--- vim.opt.wrap = true
--- vim.opt.termguicolors = true
-vim.opt.confirm = true
-vim.opt.undofile = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.smartcase = true
-vim.opt.ignorecase = true
-vim.opt.swapfile = false
+local opt = vim.opt
+local g = vim.g
 
---- Tab Settings
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
 
---- Indentation Settings
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.breakindent = true
+-- opt.wrap = false
+opt.breakindent = true
+opt.showbreak = "↪"
 
---- Netrw Settings
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
--- vim.g.netrw_liststyle = 3 --- refresh bug v171
+opt.showtabline = 2
 
---- Leader key
-vim.g.mapleader = ","
-vim.g.maplocalleader = "\\"
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+
+opt.mouse = "a"
+opt.mousescroll = "ver:1,hor:6"
+opt.mousemoveevent = true
+
+opt.confirm = true
+opt.undofile = true
+opt.swapfile = false
+
+opt.splitright = true
+opt.splitbelow = true
+
+opt.ignorecase = true
+opt.smartcase = true
+
+opt.smartindent = true
+opt.expandtab = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+
+g.mapleader = ","
+
+--- Disable some default plugins
+g.loaded_netrwPlugin = 1
+g.loaded_fzf = 1
+
+--- Disable some default providers
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_ruby_provider = 0
+
+vim.diagnostic.config({
+  virtual_lines = true,
+})

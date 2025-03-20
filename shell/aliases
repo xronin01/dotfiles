@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+
+if command -v eza > /dev/null; then
+  alias \
+    ls="eza --icons --git --group-directories-first" \
+    tree="ls --tree --level=3"
+else
+  alias ls="ls --color=auto --group-directories-first"
+fi
+
+if command -v bat > /dev/null; then
+  alias cat="bat -pp"
+fi
+
+alias \
+  ll="ls -l" \
+  la="ll -a" \
+  grep="grep --color=auto" \
+  diff="diff --color=auto" \
+  cp="cp --interactive" \
+  mv="mv --interactive" \
+  rm="rm --interactive" \
+  ..="cd .." \
+  ...="cd ../.." \
+  ....="cd ../../.." \
+  bc="bc-gh --mathlib" \
+  dc="dc-gh" \
+  vim="nvim" \
+  wget="wcurl" \
+  cls="clear" \
+  fzf="sk" \
+  rompatcher="RomPatcher"
