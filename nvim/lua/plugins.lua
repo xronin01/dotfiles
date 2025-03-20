@@ -63,6 +63,9 @@ return {
   },
   {
     "yazi.nvim",
+    -- beforeAll = function()
+    --   vim.g.loaded_netrwPlugin = 1
+    -- end,
     after = function()
       require("yazi").setup({
         -- open_for_directories = true,
@@ -73,8 +76,7 @@ return {
     "fzf-lua",
     keys = {
       {
-        "<leader>f",
-        function()
+        "<leader>f", function()
           require("fzf-lua").files()
         end,
       },
@@ -97,11 +99,9 @@ return {
       require("gitsigns").setup({
         signs = {
           add = { text = "+" },
-          change = { text = "~" },
-          delete = { text = "_" },
-          topdelete = { text = "‾" },
-          changedelete = { text = "~" },
-          untracked = { text = "┆" },
+        },
+        signs_staged = {
+          add = { text = "+" },
         },
       })
     end,
@@ -127,13 +127,13 @@ return {
       })
     end,
   },
-  -- {
-  --   "nvim-autopairs",
-  --   event = "InsertEnter",
-  --   after = function()
-  --     require("nvim-autopairs").setup()
-  --   end,
-  -- },
+  {
+    "nvim-autopairs",
+    event = "InsertEnter",
+    after = function()
+      require("nvim-autopairs").setup()
+    end,
+  },
   {
     "nvim-surround",
     after = function()
@@ -200,6 +200,7 @@ return {
         html = {},
         cssls = {},
         jsonls = {},
+        jqls = {},
         yamlls = {},
         taplo = {}
       }
@@ -318,156 +319,131 @@ return {
     keys = {
       --- Resizing splits
       {
-        "<A-h>",
-        function()
+        "<A-h>", function()
           require("smart-splits").resize_left()
         end,
       },
       {
-        "<A-j>",
-        function()
+        "<A-j>", function()
           require("smart-splits").resize_down()
         end,
       },
       {
-        "<A-k>",
-        function()
+        "<A-k>", function()
           require("smart-splits").resize_up()
         end,
       },
       {
-        "<A-l>",
-        function()
+        "<A-l>", function()
           require("smart-splits").resize_right()
         end,
       },
       {
-        "<A-Left>",
-        function()
+        "<A-Left>", function()
           require("smart-splits").resize_left()
         end,
       },
       {
-        "<A-Down>",
-        function()
+        "<A-Down>", function()
           require("smart-splits").resize_down()
         end,
       },
       {
-        "<A-Up>",
-        function()
+        "<A-Up>", function()
           require("smart-splits").resize_up()
         end,
       },
       {
-        "<A-Right>",
-        function()
+        "<A-Right>", function()
           require("smart-splits").resize_right()
         end,
       },
 
       --- Moving between splits
       {
-        "<C-h>",
-        function()
+        "<C-h>", function()
           require("smart-splits").move_cursor_left()
         end,
       },
       {
-        "<C-j>",
-        function()
+        "<C-j>", function()
           require("smart-splits").move_cursor_down()
         end,
       },
       {
-        "<C-k>",
-        function()
+        "<C-k>", function()
           require("smart-splits").move_cursor_up()
         end,
       },
       {
-        "<C-l>",
-        function()
+        "<C-l>", function()
           require("smart-splits").move_cursor_right()
         end,
       },
       {
-        "<C-Left>",
-        function()
+        "<C-Left>", function()
           require("smart-splits").move_cursor_left()
         end,
       },
       {
-        "<C-Down>",
-        function()
+        "<C-Down>", function()
           require("smart-splits").move_cursor_down()
         end,
       },
       {
-        "<C-Up>",
-        function()
+        "<C-Up>", function()
           require("smart-splits").move_cursor_up()
         end,
       },
       {
-        "<C-Right>",
-        function()
+        "<C-Right>", function()
           require("smart-splits").move_cursor_right()
         end,
       },
       {
-        "<C-\\>",
-        function()
+        "<C-\\>", function()
           require("smart-splits").move_cursor_previous()
         end,
       },
 
       --- Swapping buffers between windows
       {
-        "<leader><leader>h",
-        function()
+        "<leader><leader>h", function()
           require("smart-splits").swap_buf_left()
         end,
       },
       {
-        "<leader><leader>j",
-        function()
+        "<leader><leader>j", function()
           require("smart-splits").swap_buf_down()
         end,
       },
       {
-        "<leader><leader>k",
-        function()
+        "<leader><leader>k", function()
           require("smart-splits").swap_buf_up()
         end,
       },
       {
-        "<leader><leader>l",
-        function()
+        "<leader><leader>l", function()
           require("smart-splits").swap_buf_right()
         end,
       },
       {
-        "<leader><leader>Left",
-        function()
+        "<leader><leader>Left", function()
           require("smart-splits").swap_buf_left()
         end,
       },
       {
-        "<leader><leader>Down",
-        function()
+        "<leader><leader>Down", function()
           require("smart-splits").swap_buf_down()
         end,
       },
       {
-        "<leader><leader>Up",
-        function()
+        "<leader><leader>Up", function()
           require("smart-splits").swap_buf_up()
         end,
       },
       {
-        "<leader><leader>Right",
-        function()
+        "<leader><leader>Right", function()
           require("smart-splits").swap_buf_right()
         end,
       },
