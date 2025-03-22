@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 
-echo "" > "$PREFIX/etc/motd"
+if echo "$PREFIX" | grep -q "com.termux"; then
+  echo "" > "$PREFIX/etc/motd"
+fi
 
 ### Cozette font
 font_url=$(curl -s https://api.github.com/repos/slavfox/Cozette/releases/latest | grep "CozetteVector.ttf" | cut -d\" -f4 | grep "https")
-curl -L -o font.ttf "$font_url"
+curl --progress-bar -L -o font.ttf "$font_url"
 install -v -m 600 -D font.ttf "$HOME/.termux/font.ttf"
 install -v -m 600 -D font.ttf "$HOME/.local/share/fonts/CozetteVector.ttf"
 rm -rf font.ttf
@@ -16,11 +18,10 @@ update_symlink() {
   file=$1
   destination=$2
 
-  if [ ! -d "$(dirname "$destination")" ]; then
-    mkdir -pv "$(dirname "$destination")"
-  fi
   ln -sf "$SCRIPT_DIR/$file" "$destination"
 }
+
+mkdir -pv "$HOME/.config"
 
 # update_symlink termux/termux.properties "$HOME/.termux/termux.properties"
 update_symlink termux/colors.properties "$HOME/.termux/colors.properties"
