@@ -251,15 +251,23 @@ return {
   --   "nvim-dap",
   --   keys = {
   --     {
-  --       "<leader>dp",
-  --       function()
+  --       "<leader>db", function()
   --         require("dap").toggle_breakpoint()
   --       end,
   --     },
   --     {
-  --       "<leader>dc",
-  --       function()
+  --       "<leader>dc", function()
   --         require("dap").continue()
+  --       end,
+  --     },
+  --     {
+  --       "<leader>do", function()
+  --         require("dap").step_over()
+  --       end,
+  --     },
+  --     {
+  --       "<leader>di", function()
+  --         require("dap").step_into()
   --       end,
   --     },
   --   },
@@ -281,8 +289,7 @@ return {
   --   "one-small-step-for-vimkind",
   --   keys = {
   --     {
-  --       "<leader>dl",
-  --       function()
+  --       "<leader>dl", function()
   --         require("osv").launch({ port = 8086 })
   --       end,
   --     },
