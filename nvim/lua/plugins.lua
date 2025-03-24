@@ -51,40 +51,43 @@ return {
       })
     end,
   },
-  {
-    "netrw.nvim",
-    after = function()
-      require("netrw").setup({
-        icons = {
-          directory = "",
-        },
-      })
-    end,
-  },
+  -- {
+  --   "netrw.nvim",
+  --   after = function()
+  --     require("netrw").setup({
+  --       icons = {
+  --         directory = "",
+  --       },
+  --     })
+  --     vim.g.netrw_banner = 0
+  --     vim.g.netrw_winsize = 25
+  --     -- vim.g.netrw_liststyle = 3 --- refresh bug v171
+  --     vim.keymap.set("n", "<leader>e", "<cmd>Lexplore<cr>")
+  --   end,
+  -- },
   {
     "yazi.nvim",
-    -- beforeAll = function()
-    --   vim.g.loaded_netrwPlugin = 1
-    -- end,
+    beforeAll = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+    end,
     after = function()
       require("yazi").setup({
-        -- open_for_directories = true,
+        open_for_directories = true,
       })
+      vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>")
     end,
   },
   {
     "fzf-lua",
-    keys = {
-      {
-        "<leader>f", function()
-          require("fzf-lua").files()
-        end,
-      },
-    },
+    beforeAll = function()
+      vim.g.loaded_fzf = 1
+    end,
     after = function()
       require("fzf-lua").setup({
         -- {"skim"}
       })
+      vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>")
     end,
   },
   {

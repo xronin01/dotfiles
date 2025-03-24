@@ -27,11 +27,6 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
---- Netrw Settings
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
--- vim.g.netrw_liststyle = 3 --- refresh bug v171
-
 --- Leader key
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
