@@ -8,12 +8,16 @@ am broadcast -a com.termux.x11.ACTION_STOP -p com.termux.x11 >/dev/null 2>&1
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
 ### Start VirglServer
-virgl_test_server_android --angle-gl >/dev/null &
+# virgl_test_server_android --angle-gl >/dev/null &
 
 ### Set environment variables
 export PULSE_SERVER=127.0.0.1
-export GALLIUM_DRIVER=virpipe
-export MESA_GL_VERSION_OVERRIDE=3.1
+export MESA_VK_WSI_DEBUG=sw
+export LIBGL_KOPPER_DRI2=1
+export MESA_LOADER_DRIVER_OVERRIDE=zink
+# export GALLIUM_DRIVER=zink
+# export GALLIUM_DRIVER=virpipe
+# export MESA_GL_VERSION_OVERRIDE=3.1
 export XDG_RUNTIME_DIR=${TMPDIR}
 
 ### Start TermuxX11 processes and app

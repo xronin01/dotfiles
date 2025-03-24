@@ -16,27 +16,15 @@ export TERMUX_X11_XSTARTUP=awesome
 
 export EDITOR=nvim
 export VISUAL=$EDITOR
-# export GTERM=wezterm
 # export TERMCMD="wezterm start --always-new-process"
-export GTERM=alacritty
-export TERMCMD="alacritty"
-export BROWSER=elinks
-export PAGER="less -R"
+export TERMCMD=alacritty
+# export BROWSER=elinks
+export PAGER="less"
 export MANPAGER="nvim +Man!"
-
-export LESSHISTFILE=-
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
 export BAT_STYLE="numbers,changes,header"
 export BAT_THEME="Catppuccin Mocha"
 
-export SKIM_DEFAULT_OPTIONS="--layout=reverse"
-export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
+export SKIM_DEFAULT_OPTIONS="--layout=reverse \
 --color=fg:#cdd6f4,bg:#1e1e2e,matched:#313244,matched_bg:#f2cdcd,current:#cdd6f4,current_bg:#45475a,current_match:#1e1e2e,current_match_bg:#f5e0dc,spinner:#a6e3a1,info:#cba6f7,prompt:#89b4fa,cursor:#f38ba8,selected:#eba0ac,header:#94e2d5,border:#6c7086"
 
 export FZF_DEFAULT_OPTS="--layout=reverse \
