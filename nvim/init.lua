@@ -33,7 +33,7 @@ require("paq")({
   { "nvim-treesitter/nvim-treesitter", opt = true, build = ":TSUpdate" },
   { "windwp/nvim-autopairs", opt = true },
   { "kylechui/nvim-surround", opt = true },
-  { "Saghen/blink.cmp", opt = true, branch = "v0.14.2" },
+  { "Saghen/blink.cmp", opt = true, branch = "v1.0.0" },
   { "neovim/nvim-lspconfig", opt = true },
   { "folke/lazydev.nvim", opt = true },
   --- Luals addons

@@ -53,6 +53,7 @@ plug "zsh-users/zsh-completions"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
 # plug "jeffreytse/zsh-vi-mode"
+plug "SleepyLeslie/zsh-vi-mode" ### fork
 
 ### Load autopairs plugin
 autopair-init
