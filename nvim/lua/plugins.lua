@@ -326,138 +326,39 @@ return {
   -- },
   {
     "smart-splits.nvim",
-    keys = {
+    after = function()
+      require("smart-splits").setup({
+        -- multiplexer_integration = "tmux"
+      })
       --- Resizing splits
-      {
-        "<A-h>", function()
-          require("smart-splits").resize_left()
-        end,
-      },
-      {
-        "<A-j>", function()
-          require("smart-splits").resize_down()
-        end,
-      },
-      {
-        "<A-k>", function()
-          require("smart-splits").resize_up()
-        end,
-      },
-      {
-        "<A-l>", function()
-          require("smart-splits").resize_right()
-        end,
-      },
-      {
-        "<A-Left>", function()
-          require("smart-splits").resize_left()
-        end,
-      },
-      {
-        "<A-Down>", function()
-          require("smart-splits").resize_down()
-        end,
-      },
-      {
-        "<A-Up>", function()
-          require("smart-splits").resize_up()
-        end,
-      },
-      {
-        "<A-Right>", function()
-          require("smart-splits").resize_right()
-        end,
-      },
-
+      vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+      vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+      vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+      vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+      vim.keymap.set("n", "<A-Left>", require("smart-splits").resize_left)
+      vim.keymap.set("n", "<A-Down>", require("smart-splits").resize_down)
+      vim.keymap.set("n", "<A-Up>", require("smart-splits").resize_up)
+      vim.keymap.set("n", "<A-Right>", require("smart-splits").resize_right)
       --- Moving between splits
-      {
-        "<C-h>", function()
-          require("smart-splits").move_cursor_left()
-        end,
-      },
-      {
-        "<C-j>", function()
-          require("smart-splits").move_cursor_down()
-        end,
-      },
-      {
-        "<C-k>", function()
-          require("smart-splits").move_cursor_up()
-        end,
-      },
-      {
-        "<C-l>", function()
-          require("smart-splits").move_cursor_right()
-        end,
-      },
-      {
-        "<C-Left>", function()
-          require("smart-splits").move_cursor_left()
-        end,
-      },
-      {
-        "<C-Down>", function()
-          require("smart-splits").move_cursor_down()
-        end,
-      },
-      {
-        "<C-Up>", function()
-          require("smart-splits").move_cursor_up()
-        end,
-      },
-      {
-        "<C-Right>", function()
-          require("smart-splits").move_cursor_right()
-        end,
-      },
-      {
-        "<C-\\>", function()
-          require("smart-splits").move_cursor_previous()
-        end,
-      },
-
+      vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+      vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+      vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+      vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+      vim.keymap.set("n", "<C-Left>", require("smart-splits").move_cursor_left)
+      vim.keymap.set("n", "<C-Down>", require("smart-splits").move_cursor_down)
+      vim.keymap.set("n", "<C-Up>", require("smart-splits").move_cursor_up)
+      vim.keymap.set("n", "<C-Right>", require("smart-splits").move_cursor_right)
+      vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
       --- Swapping buffers between windows
-      {
-        "<leader><leader>h", function()
-          require("smart-splits").swap_buf_left()
-        end,
-      },
-      {
-        "<leader><leader>j", function()
-          require("smart-splits").swap_buf_down()
-        end,
-      },
-      {
-        "<leader><leader>k", function()
-          require("smart-splits").swap_buf_up()
-        end,
-      },
-      {
-        "<leader><leader>l", function()
-          require("smart-splits").swap_buf_right()
-        end,
-      },
-      {
-        "<leader><leader>Left", function()
-          require("smart-splits").swap_buf_left()
-        end,
-      },
-      {
-        "<leader><leader>Down", function()
-          require("smart-splits").swap_buf_down()
-        end,
-      },
-      {
-        "<leader><leader>Up", function()
-          require("smart-splits").swap_buf_up()
-        end,
-      },
-      {
-        "<leader><leader>Right", function()
-          require("smart-splits").swap_buf_right()
-        end,
-      },
-    },
+      vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+      vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+      vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+      vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
+      vim.keymap.set("n", "<leader><leader>Left", require("smart-splits").swap_buf_left)
+      vim.keymap.set("n", "<leader><leader>Down", require("smart-splits").swap_buf_down)
+      vim.keymap.set("n", "<leader><leader>Up", require("smart-splits").swap_buf_up)
+      vim.keymap.set("n", "<leader><leader>Right", require("smart-splits").swap_buf_right)
+    end,
   },
   {
     "vim-be-good",

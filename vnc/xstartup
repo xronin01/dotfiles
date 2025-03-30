@@ -1,5 +1,5 @@
-#!/data/data/com.termux/files/usr/bin/sh
-## This file is executed during VNC server startup.
+#!/usr/bin/env sh
+### This file is executed during VNC server startup.
 
 export MESA_VK_WSI_DEBUG=sw
 export LIBGL_KOPPER_DRI2=1
