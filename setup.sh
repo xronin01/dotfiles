@@ -5,11 +5,13 @@ if echo "$PREFIX" | grep -q "com.termux"; then
 fi
 
 ### Cozette font
-font_url=$(curl -s https://api.github.com/repos/slavfox/Cozette/releases/latest | grep "CozetteVector.ttf" | cut -d\" -f4 | grep "https")
-curl --progress-bar -L -o font.ttf "$font_url"
-install -v -m 600 -D font.ttf "$HOME/.termux/font.ttf"
-install -v -m 600 -D font.ttf "$HOME/.local/share/fonts/CozetteVector.ttf"
-rm -rf font.ttf
+release_info=$(curl -s https://api.github.com/repos/slavfox/Cozette/releases/latest)
+font_ttf=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/CozetteVector.ttf")
+font_otb=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/cozette.otb")
+curl --progress-bar -L -O "$font_ttf" -O "$font_otb"
+install -v -m 600 -D CozetteVector.ttf "$HOME/.termux/font.ttf"
+install -v -m 600 -D cozette.otb "$HOME/.local/share/fonts/cozette.otb"
+rm -rf CozetteVector.ttf cozette.otb
 
 ### Update symlinks
 SCRIPT_DIR=$(cd -- "$(dirname -- "$0")" && pwd)
