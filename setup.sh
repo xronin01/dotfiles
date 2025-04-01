@@ -4,7 +4,7 @@ if echo "$PREFIX" | grep -q "com.termux"; then
   echo "" > "$PREFIX/etc/motd"
 fi
 
-### Cozette font
+## Cozette font
 release_info=$(curl -s https://api.github.com/repos/slavfox/Cozette/releases/latest)
 font_ttf=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/CozetteVector.ttf")
 font_otb=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/cozette.otb")
@@ -13,7 +13,7 @@ install -v -m 600 -D CozetteVector.ttf "$HOME/.termux/font.ttf"
 install -v -m 600 -D cozette.otb "$HOME/.local/share/fonts/cozette.otb"
 rm -rf CozetteVector.ttf cozette.otb
 
-### Update symlinks
+## Update symlinks
 SCRIPT_DIR=$(cd -- "$(dirname -- "$0")" && pwd)
 
 update_symlink() {
