@@ -25,7 +25,7 @@ update_symlink() {
 
 mkdir -pv "$HOME/.config"
 
-# update_symlink termux/termux.properties "$HOME/.termux/termux.properties"
+update_symlink termux/termux.properties "$HOME/.termux/termux.properties"
 update_symlink termux/colors.properties "$HOME/.termux/colors.properties"
 update_symlink scripts/game2chd "$HOME/.local/bin/game2chd"
 update_symlink scripts/startx11 "$HOME/.local/bin/startx11"
