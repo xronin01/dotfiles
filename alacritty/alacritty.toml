@@ -11,4 +11,8 @@ normal = { family = "Cozette" }
 [scrolling]
 # history = 0
 
-# [cursor]
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+vi_mode_style  = { shape = "Block" }
+blink_interval = 500
+blink_timeout = 0

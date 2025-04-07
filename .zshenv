@@ -11,7 +11,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 # export DENO_INSTALL_ROOT="$HOME/.local/share/deno"
 export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PNPM_HOME"
 
-export TERMUX_X11_XSTARTUP=i3
+export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session i3"
 # export TERMINFO=/data/data/com.termux/files/usr/share/terminfo
 
 export EDITOR=nvim

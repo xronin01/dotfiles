@@ -2,6 +2,9 @@
 use = "catppuccin-mocha"
 dark = "catppuccin-mocha"
 
+[manager]
+cwd = { fg = "#89b4fa" }
+
 [status]
 sep_left  = { open = "█", close = "█" }
 sep_right = { open = "█", close = "█" }

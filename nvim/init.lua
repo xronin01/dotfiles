@@ -23,6 +23,7 @@ require("paq")({
   { "catppuccin/nvim", opt = true, as = "catppuccin" },
   { "nvim-tree/nvim-web-devicons", opt = true },
   { "akinsho/bufferline.nvim", opt = true },
+  { "nanozuki/tabby.nvim", opt = true },
   { "nvim-lualine/lualine.nvim", opt = true },
   { "prichrd/netrw.nvim", opt = true },
   { "mikavilpas/yazi.nvim", opt = true },
@@ -46,8 +47,7 @@ require("paq")({
   { "rafamadriz/friendly-snippets", opt = true },
   { "mfussenegger/nvim-dap", opt = true },
   { "jbyuki/one-small-step-for-vimkind", opt = true },
-  { "OXY2DEV/helpview.nvim", opt = true },
-  { "OXY2DEV/markview.nvim", opt = true },
+  { "uga-rosa/translate.nvim", opt = true },
 
   -- { "nvim-neorg/neorg", opt = true },
   -- { "nvim-neorg/lua-utils.nvim", },

@@ -10,6 +10,12 @@ return {
   {
     "nvim-web-devicons",
   },
+  -- {
+  --   "tabby.nvim",
+  --   after = function()
+  --     require("tabby").setup()
+  --   end,
+  -- },
   {
     "bufferline.nvim",
     after = function()
@@ -25,6 +31,7 @@ return {
       end
       require("bufferline").setup({
         options = {
+          -- mode = "tabs",
           hover = {
             enabled = true,
             delay = 50,
@@ -46,6 +53,15 @@ return {
           section_separators = {
             left = "",
             right = "",
+          },
+        },
+        sections = {
+          lualine_b = {
+            {
+              "branch",
+              icon = "",
+            },
+            "diff", "diagnostics",
           },
         },
       })
@@ -88,6 +104,8 @@ return {
         -- {"skim"}
       })
       vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>")
+      vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>")
+
     end,
   },
   {
@@ -181,7 +199,6 @@ return {
   },
   {
     "nvim-lspconfig",
-    -- lazy = true,
     before = function()
       require("lz.n").trigger_load("blink.cmp")
     end,
@@ -238,18 +255,6 @@ return {
   {
     "friendly-snippets",
   },
-  {
-    "markview.nvim",
-    after = function()
-      require("markview").setup()
-    end,
-  },
-  {
-    "helpview.nvim",
-    after = function()
-      require("helpview").setup()
-    end,
-  },
   -- {
   --   "nvim-dap",
   --   keys = {
@@ -301,6 +306,12 @@ return {
   --     require("lz.n").trigger_load("nvim-dap")
   --   end,
   -- },
+  {
+    "translate.nvim",
+    after = function()
+      require("translate").setup({})
+    end,
+  },
   -- {
   --   "neorg",
   --   lazy = false,
@@ -350,14 +361,14 @@ return {
       vim.keymap.set("n", "<C-Right>", require("smart-splits").move_cursor_right)
       vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
       --- Swapping buffers between windows
-      vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
-      vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
-      vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
-      vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
-      vim.keymap.set("n", "<leader><leader>Left", require("smart-splits").swap_buf_left)
-      vim.keymap.set("n", "<leader><leader>Down", require("smart-splits").swap_buf_down)
-      vim.keymap.set("n", "<leader><leader>Up", require("smart-splits").swap_buf_up)
-      vim.keymap.set("n", "<leader><leader>Right", require("smart-splits").swap_buf_right)
+      vim.keymap.set("n", "<C-S-h>", require("smart-splits").swap_buf_left)
+      vim.keymap.set("n", "<C-S-j>", require("smart-splits").swap_buf_down)
+      vim.keymap.set("n", "<C-S-k>", require("smart-splits").swap_buf_up)
+      vim.keymap.set("n", "<C-S-l>", require("smart-splits").swap_buf_right)
+      vim.keymap.set("n", "<C-S-Left>", require("smart-splits").swap_buf_left)
+      vim.keymap.set("n", "<C-S-Down>", require("smart-splits").swap_buf_down)
+      vim.keymap.set("n", "<C-S-Up>", require("smart-splits").swap_buf_up)
+      vim.keymap.set("n", "<C-S-Right>", require("smart-splits").swap_buf_right)
     end,
   },
   {

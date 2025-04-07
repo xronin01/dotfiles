@@ -7,11 +7,11 @@ fi
 ## Cozette font
 release_info=$(curl -s https://api.github.com/repos/slavfox/Cozette/releases/latest)
 font_ttf=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/CozetteVector.ttf")
-font_otb=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/cozette.otb")
+font_otb=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/cozette_hidpi.otb")
 curl --progress-bar -L -O "$font_ttf" -O "$font_otb"
 install -v -m 600 -D CozetteVector.ttf "$HOME/.termux/font.ttf"
-install -v -m 600 -D cozette.otb "$HOME/.local/share/fonts/cozette.otb"
-rm -rf CozetteVector.ttf cozette.otb
+install -v -m 600 -D cozette_hidpi.otb "$HOME/.local/share/fonts/cozette_hidpi.otb"
+rm -rf CozetteVector.ttf cozette_hidpi.otb
 
 ## Update symlinks
 SCRIPT_DIR=$(cd -- "$(dirname -- "$0")" && pwd)
