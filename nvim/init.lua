@@ -22,6 +22,7 @@ require("paq")({
 
   { "catppuccin/nvim", opt = true, as = "catppuccin" },
   { "nvim-tree/nvim-web-devicons", opt = true },
+  { "folke/which-key.nvim", opt = true },
   { "akinsho/bufferline.nvim", opt = true },
   { "nanozuki/tabby.nvim", opt = true },
   { "nvim-lualine/lualine.nvim", opt = true },
@@ -37,27 +38,27 @@ require("paq")({
   { "Saghen/blink.cmp", opt = true, branch = "v1.1.1" },
   { "neovim/nvim-lspconfig", opt = true },
   { "folke/lazydev.nvim", opt = true },
+  { "rafamadriz/friendly-snippets", opt = true },
+  { "mfussenegger/nvim-dap", opt = true },
+  { "jbyuki/one-small-step-for-vimkind", opt = true },
+  { "mrjones2014/smart-splits.nvim", opt = true },
+  { "uga-rosa/translate.nvim", opt = true },
+  { "neo451/feed.nvim", opt = true },
+  { "nvim-neorg/neorg", opt = true },
+  { "ThePrimeagen/vim-be-good", opt = true },
   --- Luals addons
   { "Bilal2453/luvit-meta", opt = true },
   { "nvim-neorocks/toml-edit-lua-ls-addon", opt = true },
   { "LelouchHe/xmake-luals-addon", opt = true },
   { "LuaCATS/love2d", opt = true },
   { "gonstoll/wezterm-types", opt = true },
-
-  { "rafamadriz/friendly-snippets", opt = true },
-  { "mfussenegger/nvim-dap", opt = true },
-  { "jbyuki/one-small-step-for-vimkind", opt = true },
-  { "uga-rosa/translate.nvim", opt = true },
-
-  -- { "nvim-neorg/neorg", opt = true },
-  -- { "nvim-neorg/lua-utils.nvim", },
-  -- { "MunifTanjim/nui.nvim", },
-  -- { "nvim-neotest/nvim-nio", },
-  -- { "pysan3/pathlib.nvim", },
-  { "nvim-lua/plenary.nvim", },
-
-  { "mrjones2014/smart-splits.nvim", opt = true },
-  { "ThePrimeagen/vim-be-good", opt = true },
+  --- Libs
+  { "gregorias/coop.nvim" }, --- dep of feed.nvim
+  { "nvim-lua/plenary.nvim", }, --- dep of yazi.nvim and neorg
+  { "pysan3/pathlib.nvim", },--- dep of neorg
+  { "MunifTanjim/nui.nvim", },--- dep of neorg
+  { "nvim-neotest/nvim-nio", },--- dep of neorg
+  { "nvim-neorg/lua-utils.nvim", }, --- dep of neorg
 })
 
 local ok, lz = pcall(require, "lz.n")

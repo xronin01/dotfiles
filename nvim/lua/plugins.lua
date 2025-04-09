@@ -11,6 +11,12 @@ return {
     "nvim-web-devicons",
   },
   -- {
+  --   "which-key.nvim",
+  --   after = function()
+  --     require("which-key").setup()
+  --   end,
+  -- },
+  -- {
   --   "tabby.nvim",
   --   after = function()
   --     require("tabby").setup()
@@ -307,35 +313,6 @@ return {
   --   end,
   -- },
   {
-    "translate.nvim",
-    after = function()
-      require("translate").setup({})
-    end,
-  },
-  -- {
-  --   "neorg",
-  --   lazy = false,
-  --   after = function()
-  --     require("neorg").setup({
-  --       load = {
-  --         ["core.defaults"] = {},
-  --         ["core.concealer"] = {},
-  --         ["core.dirman"] = {
-  --           config = {
-  --             workspaces = {
-  --               notes = "~/notes",
-  --             },
-  --             default_workspace = "notes",
-  --           },
-  --         },
-  --       },
-  --     })
-  --
-  --     vim.wo.foldlevel = 99
-  --     vim.wo.conceallevel = 2
-  --   end,
-  -- },
-  {
     "smart-splits.nvim",
     after = function()
       require("smart-splits").setup({
@@ -371,6 +348,44 @@ return {
       vim.keymap.set("n", "<C-S-Right>", require("smart-splits").swap_buf_right)
     end,
   },
+  {
+    "translate.nvim",
+    after = function()
+      require("translate").setup({})
+    end,
+  },
+  {
+    "feed.nvim",
+    after = function()
+      require("feed").setup({
+        feeds = {
+          "https://joshblais.com/index.xml",
+        },
+      })
+    end,
+  },
+  -- {
+  --   "neorg",
+  --   after = function()
+  --     require("neorg").setup({
+  --       load = {
+  --         ["core.defaults"] = {},
+  --         ["core.concealer"] = {},
+  --         ["core.dirman"] = {
+  --           config = {
+  --             workspaces = {
+  --               notes = "~/notes",
+  --             },
+  --             default_workspace = "notes",
+  --           },
+  --         },
+  --       },
+  --     })
+  --
+  --     vim.wo.foldlevel = 99
+  --     vim.wo.conceallevel = 2
+  --   end,
+  -- },
   {
     "vim-be-good",
     cmd = "VimBeGood",

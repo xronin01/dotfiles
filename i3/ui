@@ -1,4 +1,4 @@
-# vi: ft=i3config
+# vim: ft=i3config
 set $rosewater #f5e0dc
 set $flamingo #f2cdcd
 set $pink #f5c2e7
