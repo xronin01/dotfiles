@@ -1,2 +1,1 @@
-# krabby random
-krabby name shellder
+../shell/profile

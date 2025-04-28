@@ -1,9 +1,7 @@
-general.import = [
-  "./catppuccin-mocha.toml"
-]
+general.import = ["./catppuccin-mocha.toml"]
 
-[font]
-normal = { family = "Cozette" }
+# [font]
+# normal = { family = "Cozette" }
 
 [window]
 # opacity = 0.5
@@ -13,6 +11,6 @@ normal = { family = "Cozette" }
 
 [cursor]
 style = { shape = "Beam", blinking = "Always" }
-vi_mode_style  = { shape = "Block" }
+vi_mode_style = { shape = "Block" }
 blink_interval = 500
 blink_timeout = 0

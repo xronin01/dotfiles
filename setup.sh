@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if echo "$PREFIX" | grep -q "com.termux"; then
-  echo "" > "$PREFIX/etc/motd"
+  echo "" >"$PREFIX/etc/motd"
 fi
 
 ## Cozette font
@@ -24,6 +24,8 @@ update_symlink() {
 }
 
 mkdir -pv "$HOME/.config"
+mkdir -pv "$HOME/.local/bin"
+mkdir -pv "$HOME/.vnc"
 
 update_symlink termux/termux.properties "$HOME/.termux/termux.properties"
 update_symlink termux/colors.properties "$HOME/.termux/colors.properties"
@@ -31,6 +33,7 @@ update_symlink scripts/game2chd "$HOME/.local/bin/game2chd"
 update_symlink scripts/startx11 "$HOME/.local/bin/startx11"
 update_symlink vnc/config "$HOME/.vnc/config"
 update_symlink vnc/xstartup "$HOME/.vnc/xstartup"
+update_symlink shell "$HOME/.config/"
 update_symlink .zshenv "$HOME/.zshenv"
 update_symlink zsh "$HOME/.config/"
 update_symlink hilbish "$HOME/.config/"
@@ -41,6 +44,7 @@ update_symlink sc-im "$HOME/.config/"
 update_symlink elinks "$HOME/.config/"
 update_symlink newsboat "$HOME/.config/"
 update_symlink bat "$HOME/.config/"
+update_symlink television "$HOME/.config/"
 update_symlink fastfetch "$HOME/.config/"
 update_symlink awesome "$HOME/.config/"
 update_symlink i3 "$HOME/.config/"

@@ -33,12 +33,15 @@ require("paq")({
   { "lewis6991/gitsigns.nvim", opt = true },
   { "catgoose/nvim-colorizer.lua", opt = true },
   { "nvim-treesitter/nvim-treesitter", opt = true, build = ":TSUpdate" },
-  { "windwp/nvim-autopairs", opt = true },
   { "kylechui/nvim-surround", opt = true },
+  { "windwp/nvim-autopairs", opt = true },
   { "Saghen/blink.cmp", opt = true, branch = "v1.1.1" },
   { "neovim/nvim-lspconfig", opt = true },
   { "folke/lazydev.nvim", opt = true },
+  { "folke/trouble.nvim", opt = true },
   { "rafamadriz/friendly-snippets", opt = true },
+  { "stevearc/conform.nvim", opt = true },
+  { "mfussenegger/nvim-lint", opt = true },
   { "mfussenegger/nvim-dap", opt = true },
   { "jbyuki/one-small-step-for-vimkind", opt = true },
   { "mrjones2014/smart-splits.nvim", opt = true },
@@ -49,16 +52,16 @@ require("paq")({
   --- Luals addons
   { "Bilal2453/luvit-meta", opt = true },
   { "nvim-neorocks/toml-edit-lua-ls-addon", opt = true },
-  { "LelouchHe/xmake-luals-addon", opt = true },
+  { "xmake-io/xmake-luals-addon", opt = true },
   { "LuaCATS/love2d", opt = true },
   { "gonstoll/wezterm-types", opt = true },
   --- Libs
   { "gregorias/coop.nvim" }, --- dep of feed.nvim
-  { "nvim-lua/plenary.nvim", }, --- dep of yazi.nvim and neorg
-  { "pysan3/pathlib.nvim", },--- dep of neorg
-  { "MunifTanjim/nui.nvim", },--- dep of neorg
-  { "nvim-neotest/nvim-nio", },--- dep of neorg
-  { "nvim-neorg/lua-utils.nvim", }, --- dep of neorg
+  { "nvim-lua/plenary.nvim" }, --- dep of yazi.nvim and neorg
+  { "pysan3/pathlib.nvim" }, --- dep of neorg
+  { "MunifTanjim/nui.nvim" }, --- dep of neorg
+  { "nvim-neotest/nvim-nio" }, --- dep of neorg
+  { "nvim-neorg/lua-utils.nvim" }, --- dep of neorg
 })
 
 local ok, lz = pcall(require, "lz.n")

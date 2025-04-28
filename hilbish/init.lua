@@ -1,68 +1,64 @@
--- Default Hilbish config
-local hilbish = require 'hilbish'
-local lunacolors = require 'lunacolors'
-local bait = require 'bait'
-local ansikit = require 'ansikit'
+local hilbish = require("hilbish")
+local lunacolors = require("lunacolors")
+local bait = require("bait")
+local ansikit = require("ansikit")
 
-local unreadCount = 0
-local running = false
+hilbish.run("krabby name shellder")
+
+--- Prompt
 local function doPrompt(fail)
-	hilbish.prompt(lunacolors.format(
-		'{blue}%u {cyan}%d ' .. (fail and '{red}' or '{green}') .. '∆ '
-	))
+  -- stylua: ignore
+  hilbish.prompt(lunacolors.format(
+    "\n" .. "{blue} %d" .. "\n" .. (fail and "{red}" or "{green}") .. "❯ "
+  ))
 end
-
-local function doNotifyPrompt()
-	if running or unreadCount == hilbish.messages.unreadCount() then return end
-
-	local notifPrompt = string.format('• %s unread notification%s', hilbish.messages.unreadCount(), hilbish.messages.unreadCount() > 1 and 's' or '')
-	unreadCount = hilbish.messages.unreadCount()
-	hilbish.prompt(lunacolors.blue(notifPrompt), 'right')
-
-	hilbish.timeout(function()
-		hilbish.prompt('', 'right')
-	end, 3000)
-end
-
 doPrompt()
 
-bait.catch('command.preexec', function()
-	running = true
+bait.catch("command.exit", function(code)
+  doPrompt(code ~= 0)
 end)
 
-bait.catch('command.exit', function(code)
-	running = false
-	doPrompt(code ~= 0)
-	doNotifyPrompt()
+--- vim mode
+hilbish.inputMode("vim")
+
+ansikit.cursorStyle(ansikit.lineCursor)
+
+bait.catch("hilbish.vimMode", function(mode)
+  if mode ~= "insert" then
+    ansikit.cursorStyle(ansikit.blockCursor)
+  else
+    ansikit.cursorStyle(ansikit.lineCursor)
+  end
 end)
 
-bait.catch('hilbish.vimMode', function(mode)
-	if mode ~= 'insert' then
-		ansikit.cursorStyle(ansikit.blockCursor)
-	else
-		ansikit.cursorStyle(ansikit.lineCursor)
-	end
-end)
-
-bait.catch('hilbish.notification', function(notif)
-	doNotifyPrompt()
-end)
+--- Options
+hilbish.opts.motd = false
+hilbish.opts.greeting = false
+hilbish.opts.tips = false
+hilbish.opts.fuzzy = true
 
 --- Aliases
-hilbish.alias("ls", "eza --icons --group-directories-first")
-hilbish.alias("ll", "ls -l --git")
-hilbish.alias("la", "ll -a")
-hilbish.alias("tree", "ll --tree --level=2")
-hilbish.alias("grep", "grep --color=auto")
-hilbish.alias("cp", "cp --interactive")
-hilbish.alias("mv", "mv --interactive")
-hilbish.alias("rm", "rm --interactive")
-hilbish.alias("..", "cd ..")
-hilbish.alias("...", "cd ../..")
-hilbish.alias("cmeta", "exiftool -all= -overwrite_original $@")
-hilbish.alias("cat", "bat -pp")
-hilbish.alias("bc", "bc-gh")
-hilbish.alias("dc", "dc-gh")
-hilbish.alias("vim", "nvim")
-hilbish.alias("news", "newsboat")
-hilbish.alias("cls", "clear")
+local aliases = {
+  ls = "eza --icons --group-directories-first",
+  ll = "ls -l --git",
+  la = "ll -a",
+  tree = "ll --tree --level=2",
+  grep = "grep --color=auto",
+  cp = "cp --interactive",
+  mv = "mv --interactive",
+  rm = "rm --interactive",
+  [".."] = "cd ..",
+  ["..."] = "cd ../..",
+  cmeta = "exiftool -all= -overwrite_original $@",
+  cat = "bat -pp",
+  bc = "bc-gh",
+  dc = "dc-gh",
+  vim = "nvim",
+  news = "newsboat",
+  cls = "clear",
+  npm = "pnpm",
+}
+
+for name, command in pairs(aliases) do
+  hilbish.alias(name, command)
+end

@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+alias \
+  ls="eza --icons --group-directories-first" \
+  ll="ls -l --git" \
+  la="ll -a" \
+  tree="ll --tree --level=2" \
+  grep="grep --color=auto" \
+  cp="cp --interactive" \
+  mv="mv --interactive" \
+  rm="rm --interactive" \
+  ..="cd .." \
+  ...="cd ../.." \
+  cmeta="exiftool -all= -overwrite_original $@" \
+  cat="bat -pp" \
+  bc="bc-gh" \
+  dc="dc-gh" \
+  vim="$EDITOR" \
+  news="newsboat" \
+  cls="clear" \
+  npm="pnpm"

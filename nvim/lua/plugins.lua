@@ -11,19 +11,15 @@ return {
     "nvim-web-devicons",
   },
   -- {
-  --   "which-key.nvim",
-  --   after = function()
-  --     require("which-key").setup()
-  --   end,
-  -- },
-  -- {
   --   "tabby.nvim",
+  --   event = "UIEnter",
   --   after = function()
   --     require("tabby").setup()
   --   end,
   -- },
   {
     "bufferline.nvim",
+    event = "UIEnter",
     after = function()
       if vim.g.colors_name:find("catppuccin") then
         require("bufferline").setup({
@@ -49,6 +45,7 @@ return {
   },
   {
     "lualine.nvim",
+    event = "UIEnter",
     after = function()
       require("lualine").setup({
         options = {
@@ -67,7 +64,22 @@ return {
               "branch",
               icon = "",
             },
-            "diff", "diagnostics",
+            "diff",
+            "diagnostics",
+          },
+        },
+      })
+    end,
+  },
+  {
+    "which-key.nvim",
+    event = "DeferredUIEnter",
+    after = function()
+      require("which-key").setup({
+        preset = "helix",
+        icons = {
+          keys = {
+            C = "^",
           },
         },
       })
@@ -75,6 +87,10 @@ return {
   },
   -- {
   --   "netrw.nvim",
+  --   event = "DeferredUIEnter",
+  --   keys = {
+  --     { "<leader>e", "<cmd>Lexplore<cr>", desc = "Open netrw in working directory" },
+  --   },
   --   after = function()
   --     require("netrw").setup({
   --       icons = {
@@ -84,11 +100,15 @@ return {
   --     vim.g.netrw_banner = 0
   --     vim.g.netrw_winsize = 25
   --     -- vim.g.netrw_liststyle = 3 --- refresh bug v171
-  --     vim.keymap.set("n", "<leader>e", "<cmd>Lexplore<cr>")
   --   end,
   -- },
   {
     "yazi.nvim",
+    event = "DeferredUIEnter",
+    keys = {
+      { "<leader>e", "<cmd>Yazi cwd<cr>", desc = "Open yazi in working directory" },
+      -- { "<c-up>", "<cmd>Yazi toggle<cr>", desc = "Resume the last yazi session" },
+    },
     beforeAll = function()
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
@@ -97,11 +117,15 @@ return {
       require("yazi").setup({
         open_for_directories = true,
       })
-      vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>")
     end,
   },
   {
     "fzf-lua",
+    cmd = "FzfLua",
+    keys = {
+      { "<leader>f", "<cmd>FzfLua files<cr>", desc = "fzf files" },
+      { "<leader>b", "<cmd>FzfLua buffers<cr>", desc = "fzf buffers" },
+    },
     beforeAll = function()
       vim.g.loaded_fzf = 1
     end,
@@ -109,19 +133,18 @@ return {
       require("fzf-lua").setup({
         -- {"skim"}
       })
-      vim.keymap.set("n", "<leader>f", "<cmd>FzfLua files<cr>")
-      vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>")
-
     end,
   },
   {
     "indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
     after = function()
       require("ibl").setup()
     end,
   },
   {
     "gitsigns.nvim",
+    event = { "BufReadPost", "BufNewFile" },
     after = function()
       require("gitsigns").setup({
         signs = {
@@ -135,16 +158,43 @@ return {
   },
   {
     "nvim-colorizer.lua",
+    event = { "BufReadPost", "BufNewFile" },
     after = function()
-      require("colorizer").setup()
+      require("colorizer").setup({
+        user_default_options = {
+          names = false,
+          mode = "virtualtext",
+          virtualtext_inline = true,
+        },
+      })
     end,
   },
   {
     "nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
     after = function()
       require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          -- "c", "lua", "vim", "vimdoc", "query", "markdown", --- Termux
+          "markdown_inline",
+          "norg",
+          "csv",
+          "html",
+          "css",
+          "xml",
+          "json",
+          "jsonc",
+          "yaml",
+          "toml",
+          "bash",
+        },
+        sync_install = false,
         auto_install = true,
-        ignore_install = { "tmux" },
+        -- stylua: ignore
+        ignore_install = {
+          "c", "lua", "vim", "vimdoc", "query", "markdown", --- Termux
+          "tmux",
+        },
         highlight = {
           enable = true,
         },
@@ -155,16 +205,17 @@ return {
     end,
   },
   {
+    "nvim-surround",
+    event = "DeferredUIEnter",
+    after = function()
+      require("nvim-surround").setup()
+    end,
+  },
+  {
     "nvim-autopairs",
     event = "InsertEnter",
     after = function()
       require("nvim-autopairs").setup()
-    end,
-  },
-  {
-    "nvim-surround",
-    after = function()
-      require("nvim-surround").setup()
     end,
   },
   {
@@ -173,48 +224,40 @@ return {
     after = function()
       require("blink.cmp").setup({
         keymap = {
-          preset = "default",
-          ["<CR>"] = { "accept", "fallback" },
+          preset = "enter",
           ["<Tab>"] = { "select_next", "fallback" },
         },
-        appearance = {
-          nerd_font_variant = "normal"
-        },
         sources = {
-          default = { "lsp", "buffer", "snippets", "path" },
+          default = { "lsp", "path", "snippets", "buffer" },
           per_filetype = {
-            lua = { "lazydev", "lsp", "buffer", "snippets", "path" },
+            lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
           },
           providers = {
             lazydev = {
               name = "LazyDev",
               module = "lazydev.integrations.blink",
               score_offset = 100,
-            }
-          }
+            },
+          },
         },
         fuzzy = {
           implementation = "rust",
           prebuilt_binaries = {
             download = true,
             -- ignore_version_mismatch = true,
-          }
+          },
         },
       })
     end,
   },
   {
     "nvim-lspconfig",
-    before = function()
-      require("lz.n").trigger_load("blink.cmp")
-    end,
     after = function()
       local servers = {
         asm_lsp = {},
         clangd = {},
         rust_analyzer = {},
         gopls = {},
-        leanls = {},
         kotlin_language_server = {},
         elixirls = {},
         phpactor = {},
@@ -228,11 +271,12 @@ return {
         jsonls = {},
         jqls = {},
         yamlls = {},
-        taplo = {}
+        taplo = {},
       }
-      for server, config in pairs(servers) do
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        require("lspconfig")[server].setup(config)
+      for server, settings in pairs(servers) do
+        -- settings.capabilities = require("blink.cmp").get_lsp_capabilities(settings.capabilities)
+        vim.lsp.config(server, settings)
+        vim.lsp.enable(server)
       end
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
@@ -243,13 +287,11 @@ return {
   {
     "lazydev.nvim",
     ft = "lua",
-    before = function()
-      require("lz.n").trigger_load("nvim-lspconfig")
-    end,
     after = function()
       require("lazydev").setup({
         library = {
-          { path = "luvit-meta/library", words = { "vim%.uv" } },
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          -- { path = "luvit-meta/library", words = { "vim%.uv" } },
           { path = "toml-edit-lua-ls-addon/library" },
           { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
           { path = "love2d/library" },
@@ -259,31 +301,104 @@ return {
     end,
   },
   {
+    "trouble.nvim",
+    cmd = "Trouble",
+    keys = {
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
+      -- stylua: ignore
+      { "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions / references / ... (Trouble)" },
+      { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+    },
+    after = function()
+      require("trouble").setup()
+    end,
+  },
+  {
     "friendly-snippets",
+  },
+  {
+    "conform.nvim",
+    event = "BufWritePre",
+    cmd = "ConformInfo",
+    keys = {
+      {
+        "<leader>gf",
+        function()
+          require("conform").format({ async = true })
+        end,
+        desc = "Format buffer",
+      },
+    },
+    after = function()
+      local ft_by_formatters = {
+        clang_format = { "c", "cpp" },
+        rustfmt = { "rust" },
+        gofmt = { "go" },
+        ktlint = { "kotlin" },
+        mix = { "elixir" },
+        php_cs_fixer = { "php" },
+        deno_fmt = { "javascript", "typescript", "markdown", "html", "css", "json", "jsonc", "yaml" },
+        ruff_format = { "python" },
+        stylua = { "lua" },
+        -- shfmt = { "sh", "bash" },
+        taplo = { "toml" },
+      }
+      local formatters_by_ft = {}
+
+      for formatter, fts in pairs(ft_by_formatters) do
+        for _, ft in ipairs(fts) do
+          formatters_by_ft[ft] = { formatter }
+        end
+      end
+
+      require("conform").setup({
+        formatters_by_ft = formatters_by_ft,
+        format_on_save = {
+          timeout_ms = 1500,
+          lsp_format = "fallback",
+        },
+      })
+    end,
+  },
+  {
+    "nvim-lint",
+    event = { "BufWritePost", "BufReadPost" },
+    after = function()
+      local ft_by_linters = {
+        clippy = { "rust" },
+        ktlint = { "kotlin" },
+        credo = { "elixir" },
+        deno = { "javascript", "typescript" },
+        ruff = { "python" },
+        selene = { "lua" },
+      }
+      local linters_by_ft = {}
+
+      for linter, fts in pairs(ft_by_linters) do
+        for _, ft in ipairs(fts) do
+          linters_by_ft[ft] = { linter }
+        end
+      end
+
+      require("lint").linters_by_ft = linters_by_ft
+      require("lint").try_lint()
+    end,
   },
   -- {
   --   "nvim-dap",
+  --   event = "DeferredUIEnter",
   --   keys = {
-  --     {
-  --       "<leader>db", function()
-  --         require("dap").toggle_breakpoint()
-  --       end,
-  --     },
-  --     {
-  --       "<leader>dc", function()
-  --         require("dap").continue()
-  --       end,
-  --     },
-  --     {
-  --       "<leader>do", function()
-  --         require("dap").step_over()
-  --       end,
-  --     },
-  --     {
-  --       "<leader>di", function()
-  --         require("dap").step_into()
-  --       end,
-  --     },
+  --     { "<leader>db", "<cmd>DapToggleBreakpoint<cr>" },
+  --     { "<leader>dc", "<cmd>DapContinue<cr>" },
+  --     { "<leader>do", "<cmd>DapStepOver<cr>" },
+  --     { "<leader>di", "<cmd>DapStepInto<cr>" },
   --   },
   --   after = function()
   --     local dap = require("dap")
@@ -301,61 +416,59 @@ return {
   -- },
   -- {
   --   "one-small-step-for-vimkind",
+  --   event = "DeferredUIEnter",
   --   keys = {
   --     {
-  --       "<leader>dl", function()
+  --       "<leader>dl",
+  --       function()
   --         require("osv").launch({ port = 8086 })
   --       end,
+  --       desc = "Launch Lua adapter",
   --     },
   --   },
-  --   before = function()
-  --     require("lz.n").trigger_load("nvim-dap")
-  --   end,
   -- },
   {
     "smart-splits.nvim",
+    event = "DeferredUIEnter",
+    keys = {
+      { "<A-h>", "<cmd>SmartResizeLeft<cr>", desc = "Resize window left" },
+      { "<A-j>", "<cmd>SmartResizeDown<cr>", desc = "Resize window down" },
+      { "<A-k>", "<cmd>SmartResizeUp<cr>", desc = "Resize window up" },
+      { "<A-l>", "<cmd>SmartResizeRight<cr>", desc = "Resize window right" },
+      { "<A-Left>", "<cmd>SmartResizeLeft<cr>", desc = "Resize window left" },
+      { "<A-Down>", "<cmd>SmartResizeDown<cr>", desc = "Resize window down" },
+      { "<A-Up>", "<cmd>SmartResizeUp<cr>", desc = "Resize window up" },
+      { "<A-Right>", "<cmd>SmartResizeRight<cr>", desc = "Resize window right" },
+      { "<C-h>", "<cmd>SmartCursorMoveLeft<cr>", desc = "Move to left window" },
+      { "<C-j>", "<cmd>SmartCursorMoveDown<cr>", desc = "Move to down window" },
+      { "<C-k>", "<cmd>SmartCursorMoveUp<cr>", desc = "Move to up window" },
+      { "<C-l>", "<cmd>SmartCursorMoveRight<cr>", desc = "Move to right window" },
+      { "<C-Left>", "<cmd>SmartCursorMoveLeft<cr>", desc = "Move to left window" },
+      { "<C-Down>", "<cmd>SmartCursorMoveDown<cr>", desc = "Move to down window" },
+      { "<C-Up>", "<cmd>SmartCursorMoveUp<cr>", desc = "Move to up window" },
+      { "<C-Right>", "<cmd>SmartCursorMoveRight<cr>", desc = "Move to right window" },
+      { "<C-S-h>", "<cmd>SmartSwapLeft<cr>", desc = "Swap buffer left" },
+      { "<C-S-j>", "<cmd>SmartSwapDown<cr>", desc = "Swap buffer down" },
+      { "<C-S-k>", "<cmd>SmartSwapUp<cr>", desc = "Swap buffer up" },
+      { "<C-S-l>", "<cmd>SmartSwapRight<cr>", desc = "Swap buffer right" },
+      { "<C-S-Left>", "<cmd>SmartSwapLeft<cr>", desc = "Swap buffer left" },
+      { "<C-S-Down>", "<cmd>SmartSwapDown<cr>", desc = "Swap buffer down" },
+      { "<C-S-Up>", "<cmd>SmartSwapUp<cr>", desc = "Swap buffer up" },
+      { "<C-S-Right>", "<cmd>SmartSwapRight<cr>", desc = "Swap buffer right" },
+    },
     after = function()
       require("smart-splits").setup({
         -- multiplexer_integration = "tmux"
       })
-      --- Resizing splits
-      vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
-      vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
-      vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
-      vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
-      vim.keymap.set("n", "<A-Left>", require("smart-splits").resize_left)
-      vim.keymap.set("n", "<A-Down>", require("smart-splits").resize_down)
-      vim.keymap.set("n", "<A-Up>", require("smart-splits").resize_up)
-      vim.keymap.set("n", "<A-Right>", require("smart-splits").resize_right)
-      --- Moving between splits
-      vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-      vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-      vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-      vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
-      vim.keymap.set("n", "<C-Left>", require("smart-splits").move_cursor_left)
-      vim.keymap.set("n", "<C-Down>", require("smart-splits").move_cursor_down)
-      vim.keymap.set("n", "<C-Up>", require("smart-splits").move_cursor_up)
-      vim.keymap.set("n", "<C-Right>", require("smart-splits").move_cursor_right)
-      vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
-      --- Swapping buffers between windows
-      vim.keymap.set("n", "<C-S-h>", require("smart-splits").swap_buf_left)
-      vim.keymap.set("n", "<C-S-j>", require("smart-splits").swap_buf_down)
-      vim.keymap.set("n", "<C-S-k>", require("smart-splits").swap_buf_up)
-      vim.keymap.set("n", "<C-S-l>", require("smart-splits").swap_buf_right)
-      vim.keymap.set("n", "<C-S-Left>", require("smart-splits").swap_buf_left)
-      vim.keymap.set("n", "<C-S-Down>", require("smart-splits").swap_buf_down)
-      vim.keymap.set("n", "<C-S-Up>", require("smart-splits").swap_buf_up)
-      vim.keymap.set("n", "<C-S-Right>", require("smart-splits").swap_buf_right)
     end,
   },
   {
     "translate.nvim",
-    after = function()
-      require("translate").setup({})
-    end,
+    cmd = "Translate",
   },
   {
     "feed.nvim",
+    cmd = "Feed",
     after = function()
       require("feed").setup({
         feeds = {
@@ -381,7 +494,6 @@ return {
   --         },
   --       },
   --     })
-  --
   --     vim.wo.foldlevel = 99
   --     vim.wo.conceallevel = 2
   --   end,
