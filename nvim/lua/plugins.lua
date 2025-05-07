@@ -10,6 +10,9 @@ return {
   {
     "nvim-web-devicons",
   },
+  {
+    "volt",
+  },
   -- {
   --   "tabby.nvim",
   --   event = "UIEnter",
@@ -106,8 +109,9 @@ return {
     "yazi.nvim",
     event = "DeferredUIEnter",
     keys = {
-      { "<leader>e", "<cmd>Yazi cwd<cr>", desc = "Open yazi in working directory" },
-      -- { "<c-up>", "<cmd>Yazi toggle<cr>", desc = "Resume the last yazi session" },
+      { "<leader>ef", "<cmd>Yazi<cr>", desc = "Open yazi in current file" },
+      { "<leader>ew", "<cmd>Yazi cwd<cr>", desc = "Open yazi in working directory" },
+      { "<c-n>", "<cmd>Yazi toggle<cr>", desc = "Resume the last yazi session" },
     },
     beforeAll = function()
       vim.g.loaded_netrw = 1
@@ -123,8 +127,8 @@ return {
     "fzf-lua",
     cmd = "FzfLua",
     keys = {
-      { "<leader>f", "<cmd>FzfLua files<cr>", desc = "fzf files" },
-      { "<leader>b", "<cmd>FzfLua buffers<cr>", desc = "fzf buffers" },
+      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "fzf files" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "fzf buffers" },
     },
     beforeAll = function()
       vim.g.loaded_fzf = 1
@@ -168,6 +172,10 @@ return {
         },
       })
     end,
+  },
+  {
+    "minty",
+    cmd = { "Shades", "Huefy" },
   },
   {
     "nvim-treesitter",
@@ -230,7 +238,7 @@ return {
         sources = {
           default = { "lsp", "path", "snippets", "buffer" },
           per_filetype = {
-            lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
+            lua = { "lazydev", inherit_defaults = true },
           },
           providers = {
             lazydev = {
@@ -278,10 +286,14 @@ return {
         vim.lsp.config(server, settings)
         vim.lsp.enable(server)
       end
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
+      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+      vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Show signature help" })
+      vim.keymap.set("n", "<leader>sr", vim.lsp.buf.references, { desc = "Show References" })
+      vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
+      vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
     end,
   },
   {
@@ -325,7 +337,7 @@ return {
     cmd = "ConformInfo",
     keys = {
       {
-        "<leader>gf",
+        "<leader>fm",
         function()
           require("conform").format({ async = true })
         end,
@@ -497,5 +509,28 @@ return {
   {
     "vim-be-good",
     cmd = "VimBeGood",
+  },
+  {
+    "menu",
+    keys = {
+      {
+        "<C-t>",
+        function()
+          require("menu.utils").delete_old_menus()
+          require("menu").open("default")
+        end,
+      },
+      {
+        mode = { "n", "v" },
+        "<RightMouse>",
+        function()
+          require("menu.utils").delete_old_menus()
+          require("menu").open("default", { mouse = true })
+        end,
+      },
+    },
+    beforeAll = function()
+      vim.cmd("aunmenu PopUp")
+    end,
   },
 }
