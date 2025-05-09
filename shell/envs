@@ -4,6 +4,15 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="/run/user/$UID"
+
+if [ -n "$TERMUX_APP_PID" ]; then
+  export TERMINFO="$PREFIX/share/terminfo"
+  export XDG_CONFIG_DIRS="$PREFIX/etc/xdg"
+  export XDG_DATA_DIRS="$PREFIX/share"
+  export XDG_RUNTIME_DIR="$PREFIX/var/run/user"
+  export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session i3"
+fi
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
@@ -14,13 +23,11 @@ export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 # export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno"
 export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$COMPOSER_HOME/vendor/bin:$PNPM_HOME"
 
-export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session i3"
-# export TERMINFO=/data/data/com.termux/files/usr/share/terminfo
-
 export EDITOR=nvim
 export VISUAL=$EDITOR
 # export TERMCMD="wezterm start --always-new-process"
 export TERMCMD=alacritty
+export TERMINAL=$TERMCMD
 # export BROWSER=elinks
 export PAGER="less"
 export MANPAGER="nvim +Man!"

@@ -42,7 +42,7 @@ local aliases = {
   ls = "eza --icons --group-directories-first",
   ll = "ls -l --git",
   la = "ll -a",
-  tree = "ll --tree --level=2",
+  tree = "ls --tree --level=2",
   grep = "grep --color=auto",
   cp = "cp --interactive",
   mv = "mv --interactive",

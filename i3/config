@@ -21,15 +21,14 @@ set $ws10 "10"
 exec_always ~/.fehbg
 
 ## Mouse
-floating_modifier $mod
+floating_modifier Mod1
 tiling_drag modifier titlebar
 
 ## Keymaps
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id rofi -show run
-# bindsym $mod+d exec alacritty --class=launcher -e ~/sway-launcher-desktop.sh
-# for_window [class="^launcher$"] floating enable, sticky enable
+bindsym $mod+q kill
+bindsym $mod+d exec alacritty --class=launcher -e ~/sway-launcher-desktop/sway-launcher-desktop.sh
+for_window [class="^launcher$"] title_format "Launcher", floating enable, sticky enable, resize set 60 ppt 60 ppt, move position center
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -51,16 +50,26 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+Mod1+h split h
-bindsym $mod+Mod1+v split v
+bindsym $mod+Mod1+h resize grow width 10 px or 10 ppt
+bindsym $mod+Mod1+j resize shrink height 10 px or 10 ppt
+bindsym $mod+Mod1+k resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+l resize shrink width 10 px or 10 ppt
 
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Mod1+Left resize grow width 10 px or 10 ppt
+bindsym $mod+Mod1+Down resize shrink height 10 px or 10 ppt
+bindsym $mod+Mod1+Up resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+Right resize shrink width 10 px or 10 ppt
+
+bindsym $mod+f fullscreen bindsym
+bindsym $mod+s split toggle
+bindsym $mod+t layout toggle all
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -84,32 +93,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-mode "resize" {
-  bindsym h resize shrink width 10 px or 10 ppt
-  bindsym j resize grow height 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
-  bindsym l resize grow width 10 px or 10 ppt
-
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $mod+r mode "default"
-}
-bindsym $mod+r mode "resize"
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 ## Import UI config
 include ~/.config/i3/ui

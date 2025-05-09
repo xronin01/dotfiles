@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-if echo "$PREFIX" | grep -q "com.termux"; then
-  echo "" >"$PREFIX/etc/motd"
+if [ -n "$TERMUX_APP_PID" ]; then
+  echo "" > "$PREFIX/etc/motd"
 fi
 
 ## Cozette font

@@ -18,7 +18,7 @@ export MESA_LOADER_DRIVER_OVERRIDE=zink
 # export GALLIUM_DRIVER=zink
 # export GALLIUM_DRIVER=virpipe
 # export MESA_GL_VERSION_OVERRIDE=3.1
-export XDG_RUNTIME_DIR=${TMPDIR}
+# export XDG_RUNTIME_DIR=${TMPDIR}
 
 ## Start TermuxX11 processes and app
 termux-x11 :1 >/dev/null &
