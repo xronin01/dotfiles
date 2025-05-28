@@ -1,2 +1,6 @@
 [manager]
+ratio = [0, 4, 3]
 show_hidden = true
+
+[preview]
+wrap = "yes"

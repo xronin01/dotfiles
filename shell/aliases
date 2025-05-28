@@ -18,4 +18,5 @@ alias \
   vim="$EDITOR" \
   news="newsboat" \
   cls="clear" \
-  npm="pnpm"
+  npm="pnpm" \
+  rompatcher="RomPatcher"

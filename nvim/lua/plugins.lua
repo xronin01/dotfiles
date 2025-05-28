@@ -110,7 +110,7 @@ return {
     event = "DeferredUIEnter",
     keys = {
       { "<leader>ef", "<cmd>Yazi<cr>", desc = "Open yazi in current file" },
-      { "<leader>ew", "<cmd>Yazi cwd<cr>", desc = "Open yazi in working directory" },
+      { "<leader>ed", "<cmd>Yazi cwd<cr>", desc = "Open yazi in working directory" },
       { "<c-n>", "<cmd>Yazi toggle<cr>", desc = "Resume the last yazi session" },
     },
     beforeAll = function()
@@ -127,8 +127,10 @@ return {
     "fzf-lua",
     cmd = "FzfLua",
     keys = {
-      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "fzf files" },
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "fzf buffers" },
+      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "FzfLua files" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua buffers" },
+      { "<leader>fw", "<cmd>FzfLua live_grep<cr>", desc = "FzfLua live grep" },
+      { "<leader>fz", "<cmd>FzfLua zoxide<cr>", desc = "FzfLua zoxide" },
     },
     beforeAll = function()
       vim.g.loaded_fzf = 1
@@ -267,7 +269,7 @@ return {
         clangd = {},
         rust_analyzer = {},
         gopls = {},
-        kotlin_language_server = {},
+        kotlin_lsp = {},
         elixirls = {},
         phpactor = {},
         denols = {},
@@ -470,6 +472,12 @@ return {
       require("smart-splits").setup({
         -- multiplexer_integration = "tmux"
       })
+    end,
+  },
+  {
+    "hex.nvim",
+    after = function()
+      require("hex").setup()
     end,
   },
   {
