@@ -2,8 +2,9 @@
 use = "catppuccin-mocha"
 dark = "catppuccin-mocha"
 
-[manager]
+[mgr]
 cwd = { fg = "#89b4fa" }
+tab_sep = "█"
 
 [status]
 overall = { bg = "#181825" }
