@@ -4,7 +4,6 @@ dark = "catppuccin-mocha"
 
 [mgr]
 cwd = { fg = "#89b4fa" }
-tab_sep = "█"
 
 [status]
 overall = { bg = "#181825" }
