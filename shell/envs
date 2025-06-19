@@ -11,7 +11,7 @@ if [ -n "$TERMUX_APP_PID" ]; then
   export XDG_CONFIG_DIRS="$PREFIX/etc/xdg"
   export XDG_DATA_DIRS="$PREFIX/share"
   export XDG_RUNTIME_DIR="$PREFIX/var/run/user"
-  export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session i3"
+  export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session awesome"
   export PHP_CS_FIXER_IGNORE_ENV=1
 fi
 

@@ -5,4 +5,4 @@ export MESA_VK_WSI_DEBUG=sw
 export LIBGL_KOPPER_DRI2=1
 export MESA_LOADER_DRIVER_OVERRIDE=zink
 
-dbus-launch --exit-with-session i3 &
+dbus-launch --exit-with-session awesome &
