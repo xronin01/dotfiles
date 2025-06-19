@@ -169,7 +169,7 @@ return {
       require("colorizer").setup({
         user_default_options = {
           names = false,
-          mode = "virtualtext",
+          -- mode = "virtualtext",
           virtualtext_inline = true,
         },
       })
@@ -273,13 +273,14 @@ return {
         elixirls = {},
         phpactor = {},
         denols = {},
-        ruff = {},
+        ty = {},
         lua_ls = {},
         teal_ls = {},
         -- bashls = {},
         awk_ls = {},
         html = {},
         cssls = {},
+        tailwindcss = {},
         jsonls = {},
         jqls = {},
         yamlls = {},
@@ -384,6 +385,7 @@ return {
     event = { "BufWritePost", "BufReadPost" },
     after = function()
       local ft_by_linters = {
+        clangtidy = { "cpp" },
         clippy = { "rust" },
         ktlint = { "kotlin" },
         credo = { "elixir" },
