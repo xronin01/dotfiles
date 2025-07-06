@@ -12,7 +12,6 @@ if [ -n "$TERMUX_APP_PID" ]; then
   export XDG_DATA_DIRS="$PREFIX/share"
   export XDG_RUNTIME_DIR="$PREFIX/var/run/user"
   export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session awesome"
-  export PHP_CS_FIXER_IGNORE_ENV=1
 fi
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -20,9 +19,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export COMPOSER_HOME="$XDG_DATA_HOME/composer"
-export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-# export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno"
-export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$COMPOSER_HOME/vendor/bin:$PNPM_HOME"
+export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno"
+export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$COMPOSER_HOME/vendor/bin:$DENO_INSTALL_ROOT/bin"
 
 export EDITOR=nvim
 export VISUAL=$EDITOR

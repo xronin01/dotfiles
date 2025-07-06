@@ -5,9 +5,9 @@ if [ -n "$TERMUX_APP_PID" ]; then
 fi
 
 ## Cozette font
-release_info=$(curl -s https://api.github.com/repos/slavfox/Cozette/releases/latest)
-font_ttf=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/CozetteVector.ttf")
-font_otb=$(echo "$release_info" | grep -o "https://github.com/slavfox/Cozette/releases/download/v.*/cozette_hidpi.otb")
+release_info=$(curl -s https://api.github.com/repos/the-moonwitch/Cozette/releases/latest)
+font_ttf=$(echo "$release_info" | grep -o "https://github.com/the-moonwitch/Cozette/releases/download/v.*/CozetteVector.ttf")
+font_otb=$(echo "$release_info" | grep -o "https://github.com/the-moonwitch/Cozette/releases/download/v.*/cozette_hidpi.otb")
 curl --progress-bar -L -O "$font_ttf" -O "$font_otb"
 install -v -m 600 -D CozetteVector.ttf "$HOME/.termux/font.ttf"
 install -v -m 600 -D cozette_hidpi.otb "$HOME/.local/share/fonts/cozette_hidpi.otb"
