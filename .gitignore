@@ -6,5 +6,5 @@ elinks/globhist
 elinks/gotohist
 newsboat/urls
 aerc/accounts.conf
-television/default_channels.toml
+television/cable/
 yazi/flavors/

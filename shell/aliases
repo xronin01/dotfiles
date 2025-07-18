@@ -11,7 +11,6 @@ alias \
   rm="rm --interactive" \
   ..="cd .." \
   ...="cd ../.." \
-  cmeta="exiftool -all= -overwrite_original $@" \
   cat="bat -pp" \
   bc="bc-gh" \
   dc="dc-gh" \

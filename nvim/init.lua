@@ -37,7 +37,7 @@ require("paq")({
   { "nvim-treesitter/nvim-treesitter", opt = true, build = ":TSUpdate" },
   { "kylechui/nvim-surround", opt = true },
   { "windwp/nvim-autopairs", opt = true },
-  { "Saghen/blink.cmp", opt = true, branch = "v1.4.1" },
+  { "Saghen/blink.cmp", opt = true, branch = "v1.5.1" },
   { "neovim/nvim-lspconfig", opt = true },
   { "folke/lazydev.nvim", opt = true },
   { "folke/trouble.nvim", opt = true },
