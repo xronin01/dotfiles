@@ -13,6 +13,46 @@ return {
   {
     "volt",
   },
+  {
+    "menu",
+    keys = {
+      {
+        "<C-t>",
+        function()
+          require("menu.utils").delete_old_menus()
+          require("menu").open("default")
+        end,
+      },
+      {
+        mode = { "n", "v" },
+        "<RightMouse>",
+        function()
+          require("menu.utils").delete_old_menus()
+          require("menu").open("default", { mouse = true })
+        end,
+      },
+    },
+    beforeAll = function()
+      vim.cmd("aunmenu PopUp")
+    end,
+  },
+  {
+    "minty",
+    cmd = { "Shades", "Huefy" },
+  },
+  {
+    "nvim-colorizer.lua",
+    event = { "BufReadPost", "BufNewFile" },
+    after = function()
+      require("colorizer").setup({
+        user_default_options = {
+          names = false,
+          -- mode = "virtualtext",
+          virtualtext_inline = true,
+        },
+      })
+    end,
+  },
   -- {
   --   "tabby.nvim",
   --   event = "UIEnter",
@@ -26,7 +66,7 @@ return {
     after = function()
       if vim.g.colors_name:find("catppuccin") then
         require("bufferline").setup({
-          highlights = require("catppuccin.groups.integrations.bufferline").get({
+          highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
             styles = {
               "no_italic",
               "bold",
@@ -163,23 +203,6 @@ return {
     end,
   },
   {
-    "nvim-colorizer.lua",
-    event = { "BufReadPost", "BufNewFile" },
-    after = function()
-      require("colorizer").setup({
-        user_default_options = {
-          names = false,
-          -- mode = "virtualtext",
-          virtualtext_inline = true,
-        },
-      })
-    end,
-  },
-  {
-    "minty",
-    cmd = { "Shades", "Huefy" },
-  },
-  {
     "nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
     after = function()
@@ -265,25 +288,19 @@ return {
     "nvim-lspconfig",
     after = function()
       local servers = {
-        asm_lsp = {},
         clangd = {},
         rust_analyzer = {},
-        gopls = {},
         kotlin_lsp = {},
         elixirls = {},
-        phpactor = {},
-        denols = {},
-        ty = {},
         lua_ls = {},
         teal_ls = {},
+        denols = {},
+        ty = {},
+        phpactor = {},
         -- bashls = {},
-        awk_ls = {},
-        html = {},
-        cssls = {},
+        -- html = {},
+        -- cssls = {},
         tailwindcss = {},
-        jsonls = {},
-        jqls = {},
-        yamlls = {},
         taplo = {},
       }
       for server, settings in pairs(servers) do
@@ -353,13 +370,12 @@ return {
       local ft_by_formatters = {
         clang_format = { "c", "cpp" },
         rustfmt = { "rust" },
-        gofmt = { "go" },
         ktlint = { "kotlin" },
         mix = { "elixir" },
-        php_cs_fixer = { "php" },
+        stylua = { "lua" },
         deno_fmt = { "javascript", "typescript", "markdown", "html", "css", "json", "jsonc", "yaml" },
         ruff_format = { "python" },
-        stylua = { "lua" },
+        php_cs_fixer = { "php" },
         -- shfmt = { "sh", "bash" },
         taplo = { "toml" },
       }
@@ -389,9 +405,10 @@ return {
         clippy = { "rust" },
         ktlint = { "kotlin" },
         credo = { "elixir" },
+        luacheck = { "lua" },
         deno = { "javascript", "typescript" },
         ruff = { "python" },
-        selene = { "lua" },
+        shellcheck = { "sh", "bash" },
       }
       local linters_by_ft = {}
 
@@ -521,28 +538,5 @@ return {
   {
     "vim-be-good",
     cmd = "VimBeGood",
-  },
-  {
-    "menu",
-    keys = {
-      {
-        "<C-t>",
-        function()
-          require("menu.utils").delete_old_menus()
-          require("menu").open("default")
-        end,
-      },
-      {
-        mode = { "n", "v" },
-        "<RightMouse>",
-        function()
-          require("menu.utils").delete_old_menus()
-          require("menu").open("default", { mouse = true })
-        end,
-      },
-    },
-    beforeAll = function()
-      vim.cmd("aunmenu PopUp")
-    end,
   },
 }
