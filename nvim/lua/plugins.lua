@@ -11,56 +11,6 @@ return {
     "nvim-web-devicons",
   },
   {
-    "volt",
-  },
-  {
-    "menu",
-    keys = {
-      {
-        "<C-t>",
-        function()
-          require("menu.utils").delete_old_menus()
-          require("menu").open("default")
-        end,
-      },
-      {
-        mode = { "n", "v" },
-        "<RightMouse>",
-        function()
-          require("menu.utils").delete_old_menus()
-          require("menu").open("default", { mouse = true })
-        end,
-      },
-    },
-    beforeAll = function()
-      vim.cmd("aunmenu PopUp")
-    end,
-  },
-  {
-    "minty",
-    cmd = { "Shades", "Huefy" },
-  },
-  {
-    "nvim-colorizer.lua",
-    event = { "BufReadPost", "BufNewFile" },
-    after = function()
-      require("colorizer").setup({
-        user_default_options = {
-          names = false,
-          -- mode = "virtualtext",
-          virtualtext_inline = true,
-        },
-      })
-    end,
-  },
-  -- {
-  --   "tabby.nvim",
-  --   event = "UIEnter",
-  --   after = function()
-  --     require("tabby").setup()
-  --   end,
-  -- },
-  {
     "bufferline.nvim",
     event = "UIEnter",
     after = function()
@@ -115,6 +65,36 @@ return {
     end,
   },
   {
+    "volt",
+  },
+  {
+    "menu",
+    keys = {
+      {
+        "<C-t>",
+        function()
+          require("menu.utils").delete_old_menus()
+          require("menu").open("default")
+        end,
+      },
+      {
+        mode = { "n", "v" },
+        "<RightMouse>",
+        function()
+          require("menu.utils").delete_old_menus()
+          require("menu").open("default", { mouse = true })
+        end,
+      },
+    },
+    beforeAll = function()
+      vim.cmd("aunmenu PopUp")
+    end,
+  },
+  {
+    "minty",
+    cmd = { "Shades", "Huefy" },
+  },
+  {
     "which-key.nvim",
     event = "DeferredUIEnter",
     after = function()
@@ -128,80 +108,6 @@ return {
       })
     end,
   },
-  -- {
-  --   "netrw.nvim",
-  --   event = "DeferredUIEnter",
-  --   keys = {
-  --     { "<leader>e", "<cmd>Lexplore<cr>", desc = "Open netrw in working directory" },
-  --   },
-  --   after = function()
-  --     require("netrw").setup({
-  --       icons = {
-  --         directory = "",
-  --       },
-  --     })
-  --     vim.g.netrw_banner = 0
-  --     vim.g.netrw_winsize = 25
-  --     -- vim.g.netrw_liststyle = 3 --- refresh bug v171
-  --   end,
-  -- },
-  {
-    "yazi.nvim",
-    event = "DeferredUIEnter",
-    keys = {
-      { "<leader>ef", "<cmd>Yazi<cr>", desc = "Open yazi in current file" },
-      { "<leader>ed", "<cmd>Yazi cwd<cr>", desc = "Open yazi in working directory" },
-      { "<c-n>", "<cmd>Yazi toggle<cr>", desc = "Resume the last yazi session" },
-    },
-    beforeAll = function()
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-    end,
-    after = function()
-      require("yazi").setup({
-        open_for_directories = true,
-      })
-    end,
-  },
-  {
-    "fzf-lua",
-    cmd = "FzfLua",
-    keys = {
-      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "FzfLua files" },
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua buffers" },
-      { "<leader>fw", "<cmd>FzfLua live_grep<cr>", desc = "FzfLua live grep" },
-      { "<leader>fz", "<cmd>FzfLua zoxide<cr>", desc = "FzfLua zoxide" },
-    },
-    beforeAll = function()
-      vim.g.loaded_fzf = 1
-    end,
-    after = function()
-      require("fzf-lua").setup({
-        -- {"skim"}
-      })
-    end,
-  },
-  {
-    "indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    after = function()
-      require("ibl").setup()
-    end,
-  },
-  {
-    "gitsigns.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    after = function()
-      require("gitsigns").setup({
-        signs = {
-          add = { text = "+" },
-        },
-        signs_staged = {
-          add = { text = "+" },
-        },
-      })
-    end,
-  },
   {
     "nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
@@ -210,7 +116,8 @@ return {
         ensure_installed = {
           -- "c", "lua", "vim", "vimdoc", "query", "markdown", --- Termux
           "markdown_inline",
-          "norg",
+          "latex",
+          "typst",
           "csv",
           "html",
           "css",
@@ -234,6 +141,40 @@ return {
         },
         indent = {
           enable = true,
+        },
+      })
+    end,
+  },
+  {
+    "indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    after = function()
+      require("ibl").setup()
+    end,
+  },
+  {
+    "nvim-colorizer.lua",
+    event = { "BufReadPost", "BufNewFile" },
+    after = function()
+      require("colorizer").setup({
+        user_default_options = {
+          names = false,
+          -- mode = "virtualtext",
+          virtualtext_inline = true,
+        },
+      })
+    end,
+  },
+  {
+    "gitsigns.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    after = function()
+      require("gitsigns").setup({
+        signs = {
+          add = { text = "+" },
+        },
+        signs_staged = {
+          add = { text = "+" },
         },
       })
     end,
@@ -302,6 +243,8 @@ return {
         -- cssls = {},
         tailwindcss = {},
         taplo = {},
+        texlab = {},
+        tinymist = {},
       }
       for server, settings in pairs(servers) do
         -- settings.capabilities = require("blink.cmp").get_lsp_capabilities(settings.capabilities)
@@ -378,6 +321,8 @@ return {
         php_cs_fixer = { "php" },
         -- shfmt = { "sh", "bash" },
         taplo = { "toml" },
+        ["tex-fmt"] = { "tex" },
+        typstyle = { "typst" },
       }
       local formatters_by_ft = {}
 
@@ -458,6 +403,12 @@ return {
   --     },
   --   },
   -- },
+  -- {
+  --   "neotest",
+  --   after = function()
+  --     require("neotest").setup({})
+  --   end,
+  -- },
   {
     "smart-splits.nvim",
     event = "DeferredUIEnter",
@@ -494,49 +445,62 @@ return {
     end,
   },
   {
-    "hex.nvim",
-    after = function()
-      require("hex").setup()
+    "yazi.nvim",
+    event = "DeferredUIEnter",
+    keys = {
+      { "<leader>ef", "<cmd>Yazi<cr>", desc = "Open yazi in current file" },
+      { "<leader>ed", "<cmd>Yazi cwd<cr>", desc = "Open yazi in working directory" },
+      { "<c-n>", "<cmd>Yazi toggle<cr>", desc = "Resume the last yazi session" },
+    },
+    beforeAll = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
     end,
+    after = function()
+      require("yazi").setup({
+        open_for_directories = true,
+      })
+    end,
+  },
+  {
+    "fzf-lua",
+    cmd = "FzfLua",
+    keys = {
+      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "FzfLua files" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua buffers" },
+      { "<leader>fw", "<cmd>FzfLua live_grep<cr>", desc = "FzfLua live grep" },
+      { "<leader>fz", "<cmd>FzfLua zoxide<cr>", desc = "FzfLua zoxide" },
+    },
+    beforeAll = function()
+      vim.g.loaded_fzf = 1
+    end,
+    after = function()
+      require("fzf-lua").setup({
+        -- {"skim"}
+      })
+    end,
+  },
+  {
+    "zincoxide",
+    cmd = { "Z", "Zg", "Zt", "Zw" },
+    after = function()
+      require("zincoxide").setup({})
+    end,
+  },
+  {
+    "sc-im.nvim",
+    -- after = function()
+    --   require("sc-im").setup()
+    -- end,
   },
   {
     "translate.nvim",
     cmd = "Translate",
   },
   {
-    "feed.nvim",
-    cmd = "Feed",
+    "hex.nvim",
     after = function()
-      require("feed").setup({
-        feeds = {
-          "https://joshblais.com/index.xml",
-        },
-      })
+      require("hex").setup()
     end,
-  },
-  -- {
-  --   "neorg",
-  --   after = function()
-  --     require("neorg").setup({
-  --       load = {
-  --         ["core.defaults"] = {},
-  --         ["core.concealer"] = {},
-  --         ["core.dirman"] = {
-  --           config = {
-  --             workspaces = {
-  --               notes = "~/notes",
-  --             },
-  --             default_workspace = "notes",
-  --           },
-  --         },
-  --       },
-  --     })
-  --     vim.wo.foldlevel = 99
-  --     vim.wo.conceallevel = 2
-  --   end,
-  -- },
-  {
-    "vim-be-good",
-    cmd = "VimBeGood",
   },
 }
