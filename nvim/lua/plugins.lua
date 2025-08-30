@@ -232,7 +232,7 @@ return {
         clangd = {},
         rust_analyzer = {},
         kotlin_lsp = {},
-        elixirls = {},
+        expert = {},
         lua_ls = {},
         teal_ls = {},
         denols = {},
