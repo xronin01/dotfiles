@@ -110,51 +110,42 @@ return {
   },
   {
     "nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre", "DeferredUIEnter" },
     after = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          -- "c", "lua", "vim", "vimdoc", "query", "markdown", --- Termux
-          "markdown_inline",
-          "latex",
-          "typst",
-          "csv",
-          "html",
-          "css",
-          "xml",
-          "json",
-          "jsonc",
-          "yaml",
-          "toml",
-          "bash",
-          "teal",
-        },
-        sync_install = false,
-        auto_install = true,
-        -- stylua: ignore
-        ignore_install = {
-          "c", "lua", "vim", "vimdoc", "query", "markdown", --- Termux
-          "tmux",
-        },
-        highlight = {
-          enable = true,
-        },
-        indent = {
-          enable = true,
-        },
+      require("nvim-treesitter").setup()
+      require("nvim-treesitter").install({
+        "kotlin",
+        "elixir",
+        "teal",
+        "bash",
+        "html",
+        "css",
+        -- "latex",
+        "typst",
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "*" },
+        callback = function()
+          local ft = vim.bo.filetype
+          if vim.treesitter.language.add(ft) then
+            vim.treesitter.start(0, ft)
+            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
       })
     end,
   },
   {
     "indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     after = function()
       require("ibl").setup()
     end,
   },
   {
     "nvim-colorizer.lua",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     after = function()
       require("colorizer").setup({
         user_default_options = {
@@ -167,7 +158,7 @@ return {
   },
   {
     "gitsigns.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     after = function()
       require("gitsigns").setup({
         signs = {
@@ -195,13 +186,16 @@ return {
   },
   {
     "blink.cmp",
-    event = "InsertEnter",
+    -- event = "InsertEnter",
     after = function()
       require("blink.cmp").setup({
         keymap = {
           preset = "enter",
           ["<Tab>"] = { "select_next", "fallback" },
         },
+        -- completion = {
+        --   documentation = { auto_show = true },
+        -- },
         sources = {
           default = { "lsp", "path", "snippets", "buffer" },
           per_filetype = {
@@ -216,7 +210,7 @@ return {
           },
         },
         fuzzy = {
-          implementation = "rust",
+          implementation = "prefer_rust_with_warning",
           prebuilt_binaries = {
             download = true,
             -- ignore_version_mismatch = true,
@@ -227,6 +221,7 @@ return {
   },
   {
     "nvim-lspconfig",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     after = function()
       local servers = {
         clangd = {},
@@ -235,6 +230,7 @@ return {
         expert = {},
         lua_ls = {},
         teal_ls = {},
+        -- emmylua_ls = {},
         denols = {},
         ty = {},
         phpactor = {},
@@ -343,7 +339,7 @@ return {
   },
   {
     "nvim-lint",
-    event = { "BufWritePost", "BufReadPost" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     after = function()
       local ft_by_linters = {
         clangtidy = { "cpp" },
@@ -364,7 +360,11 @@ return {
       end
 
       require("lint").linters_by_ft = linters_by_ft
-      require("lint").try_lint()
+      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
     end,
   },
   -- {
@@ -467,9 +467,11 @@ return {
     cmd = "FzfLua",
     keys = {
       { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "FzfLua files" },
+      { "<leader>fo", "<cmd>FzfLua oldfiles<cr>", desc = "FzfLua oldfiles" },
       { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "FzfLua buffers" },
       { "<leader>fw", "<cmd>FzfLua live_grep<cr>", desc = "FzfLua live grep" },
       { "<leader>fz", "<cmd>FzfLua zoxide<cr>", desc = "FzfLua zoxide" },
+      { "<leader>fh", "<cmd>FzfLua helptags<cr>", desc = "FzfLua helptags" },
     },
     beforeAll = function()
       vim.g.loaded_fzf = 1

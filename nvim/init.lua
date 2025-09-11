@@ -10,7 +10,7 @@ if not vim.uv.fs_stat(paq_path) then
   })
 end
 -- vim.opt.rtp:prepend(paq_path)
-vim.cmd.packadd("paq-nvim")
+-- vim.cmd.packadd("paq-nvim")
 
 require("options")
 require("keymaps")
@@ -29,7 +29,7 @@ require("paq")({
   { "nvzone/menu", opt = true },
   { "nvzone/minty", opt = true },
   { "folke/which-key.nvim", opt = true },
-  { "nvim-treesitter/nvim-treesitter", opt = true, build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter", opt = true, branch = "main", build = ":TSUpdate" },
   { "lukas-reineke/indent-blankline.nvim", opt = true },
   { "catgoose/nvim-colorizer.lua", opt = true },
   { "lewis6991/gitsigns.nvim", opt = true },
