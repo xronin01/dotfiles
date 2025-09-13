@@ -186,7 +186,7 @@ return {
   },
   {
     "blink.cmp",
-    -- event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     after = function()
       require("blink.cmp").setup({
         keymap = {
@@ -220,6 +220,9 @@ return {
     end,
   },
   {
+    "friendly-snippets",
+  },
+  {
     "nvim-lspconfig",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     after = function()
@@ -243,7 +246,6 @@ return {
         tinymist = {},
       }
       for server, settings in pairs(servers) do
-        -- settings.capabilities = require("blink.cmp").get_lsp_capabilities(settings.capabilities)
         vim.lsp.config(server, settings)
         vim.lsp.enable(server)
       end
@@ -265,9 +267,9 @@ return {
         library = {
           { path = "${3rd}/luv/library", words = { "vim%.uv" } },
           -- { path = "luvit-meta/library", words = { "vim%.uv" } },
-          { path = "toml-edit-lua-ls-addon/library" },
+          -- { path = "toml-edit-lua-ls-addon/library" },
           { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
-          { path = "love2d/library" },
+          -- { path = "love2d/library" },
           { path = "wezterm-types", mods = { "wezterm" } },
         },
       })
@@ -288,9 +290,6 @@ return {
     after = function()
       require("trouble").setup()
     end,
-  },
-  {
-    "friendly-snippets",
   },
   {
     "conform.nvim",
@@ -346,7 +345,7 @@ return {
         clippy = { "rust" },
         ktlint = { "kotlin" },
         credo = { "elixir" },
-        luacheck = { "lua" },
+        -- luacheck = { "lua" },
         deno = { "javascript", "typescript" },
         ruff = { "python" },
         shellcheck = { "sh", "bash" },
@@ -367,42 +366,52 @@ return {
       })
     end,
   },
-  -- {
-  --   "nvim-dap",
-  --   event = "DeferredUIEnter",
-  --   keys = {
-  --     { "<leader>db", "<cmd>DapToggleBreakpoint<cr>" },
-  --     { "<leader>dc", "<cmd>DapContinue<cr>" },
-  --     { "<leader>do", "<cmd>DapStepOver<cr>" },
-  --     { "<leader>di", "<cmd>DapStepInto<cr>" },
-  --   },
-  --   after = function()
-  --     local dap = require("dap")
-  --     dap.configurations.lua = {
-  --       {
-  --         type = "nlua",
-  --         request = "attach",
-  --         name = "Attach to running Neovim instance",
-  --       },
-  --     }
-  --     dap.adapters.nlua = function(callback, config)
-  --       callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
-  --     end
-  --   end,
-  -- },
-  -- {
-  --   "one-small-step-for-vimkind",
-  --   event = "DeferredUIEnter",
-  --   keys = {
-  --     {
-  --       "<leader>dl",
-  --       function()
-  --         require("osv").launch({ port = 8086 })
-  --       end,
-  --       desc = "Launch Lua adapter",
-  --     },
-  --   },
-  -- },
+  {
+    "nvim-dap",
+    event = "DeferredUIEnter",
+    keys = {
+      { "<leader>db", "<cmd>DapToggleBreakpoint<cr>" },
+      { "<leader>dc", "<cmd>DapContinue<cr>" },
+      { "<leader>do", "<cmd>DapStepOver<cr>" },
+      { "<leader>di", "<cmd>DapStepInto<cr>" },
+    },
+    after = function()
+      local dap = require("dap")
+      dap.configurations.lua = {
+        {
+          type = "nlua",
+          request = "attach",
+          name = "Attach to running Neovim instance",
+        },
+      }
+      dap.adapters.nlua = function(callback, config)
+        callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+      end
+    end,
+  },
+  {
+    "one-small-step-for-vimkind",
+    event = "DeferredUIEnter",
+    keys = {
+      {
+        "<leader>dl",
+        function()
+          require("osv").launch({ port = 8086 })
+        end,
+        desc = "Launch Lua adapter",
+      },
+    },
+  },
+  {
+    "mason.nvim",
+    after = function()
+      require("mason").setup()
+      local sysname = vim.uv.os_uname().sysname
+      if sysname == "Windows_NT" then
+        print("Windows!")
+      end
+    end,
+  },
   -- {
   --   "neotest",
   --   after = function()

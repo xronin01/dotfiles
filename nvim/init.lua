@@ -36,10 +36,11 @@ require("paq")({
   { "kylechui/nvim-surround", opt = true },
   { "windwp/nvim-autopairs", opt = true },
   { "Saghen/blink.cmp", opt = true, branch = "v1.6.0" },
+  { "rafamadriz/friendly-snippets", opt = true },
+  { "mason-org/mason.nvim", opt = true },
   { "neovim/nvim-lspconfig", opt = true },
   { "folke/lazydev.nvim", opt = true },
   { "folke/trouble.nvim", opt = true },
-  { "rafamadriz/friendly-snippets", opt = true },
   { "stevearc/conform.nvim", opt = true },
   { "mfussenegger/nvim-lint", opt = true },
   { "mfussenegger/nvim-dap", opt = true },
@@ -57,7 +58,7 @@ require("paq")({
   { "nvim-neorocks/toml-edit-lua-ls-addon", opt = true },
   { "xmake-io/xmake-luals-addon", opt = true },
   { "LuaCATS/love2d", opt = true },
-  { "gonstoll/wezterm-types", opt = true },
+  { "DrKJeff16/wezterm-types", opt = true },
 })
 
 local ok, lz = pcall(require, "lz.n")
