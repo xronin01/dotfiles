@@ -87,7 +87,7 @@ return {
       },
     },
     beforeAll = function()
-      vim.cmd("aunmenu PopUp")
+      vim.cmd.aunmenu("PopUp")
     end,
   },
   {
@@ -129,8 +129,8 @@ return {
           local ft = vim.bo.filetype
           if vim.treesitter.language.add(ft) then
             vim.treesitter.start(0, ft)
-            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            -- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           end
         end,
       })
@@ -221,10 +221,11 @@ return {
   },
   {
     "friendly-snippets",
+    event = "InsertEnter",
   },
   {
     "nvim-lspconfig",
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    -- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     after = function()
       local servers = {
         clangd = {},
