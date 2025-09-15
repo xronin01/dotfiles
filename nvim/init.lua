@@ -35,7 +35,7 @@ require("paq")({
   { "lewis6991/gitsigns.nvim", opt = true },
   { "kylechui/nvim-surround", opt = true },
   { "windwp/nvim-autopairs", opt = true },
-  { "Saghen/blink.cmp", opt = true, branch = "v1.6.0" },
+  { "Saghen/blink.cmp", opt = true, branch = "v1.7.0" },
   { "rafamadriz/friendly-snippets", opt = true },
   { "neovim/nvim-lspconfig", opt = true },
   { "folke/lazydev.nvim", opt = true },

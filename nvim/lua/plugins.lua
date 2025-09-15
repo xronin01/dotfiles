@@ -197,7 +197,6 @@ return {
         --   documentation = { auto_show = true },
         -- },
         sources = {
-          default = { "lsp", "path", "snippets", "buffer" },
           per_filetype = {
             lua = { "lazydev", inherit_defaults = true },
           },
