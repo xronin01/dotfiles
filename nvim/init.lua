@@ -18,7 +18,7 @@ require("autocmd")
 
 require("paq")({
   { "savq/paq-nvim" },
-  { "nvim-neorocks/lz.n" },
+  { "lumen-oss/lz.n" },
   { "nvim-lua/plenary.nvim" },
 
   { "catppuccin/nvim", opt = true, as = "catppuccin" },
@@ -55,7 +55,7 @@ require("paq")({
   { "RaafatTurki/hex.nvim", opt = true },
   --- Luals addons
   { "Bilal2453/luvit-meta", opt = true },
-  { "nvim-neorocks/toml-edit-lua-ls-addon", opt = true },
+  { "lumen-oss/toml-edit-lua-ls-addon", opt = true },
   { "xmake-io/xmake-luals-addon", opt = true },
   { "LuaCATS/love2d", opt = true },
   { "DrKJeff16/wezterm-types", opt = true },
