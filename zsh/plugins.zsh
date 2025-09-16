@@ -4,9 +4,12 @@ fpath=($ZAP_PLUGIN_DIR/zsh-completions/src $fpath)
 ## Load tab completions for fzf-tab
 autoload -U compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
+setopt re_match_pcre
+
 ## zsh-vi-mode config
 function zvm_config() {
   ZVM_INIT_MODE=sourcing
+  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
   ZVM_VI_HIGHLIGHT_BACKGROUND=#313244
   ZVM_VI_HIGHLIGHT_FOREGROUND=#cdd6f4
 }
@@ -17,8 +20,8 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-completions"
-# plug "jeffreytse/zsh-vi-mode"
-plug "SleepyLeslie/zsh-vi-mode" ## fork
+plug "jeffreytse/zsh-vi-mode"
+# plug "SleepyLeslie/zsh-vi-mode" ## fork
 plug "hlissner/zsh-autopair"
 
 ## fzf-tab config
