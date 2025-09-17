@@ -32,7 +32,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 
-## history substring search config
+## zsh-history-substring-search config
 bindkey "^[[B" history-substring-search-down
 bindkey "^[[A" history-substring-search-up
 bindkey -M vicmd "^[[B" history-substring-search-down

@@ -5,12 +5,11 @@ if not vim.uv.fs_stat(paq_path) then
     "git",
     "clone",
     "--depth=1",
-    "https://github.com/savq/paq-nvim.git",
+    "https://github.com/savq/paq-nvim",
     paq_path,
   })
+  vim.cmd.packadd("paq-nvim")
 end
--- vim.opt.rtp:prepend(paq_path)
--- vim.cmd.packadd("paq-nvim")
 
 require("options")
 require("keymaps")
@@ -60,6 +59,7 @@ require("paq")({
   { "LuaCATS/love2d", opt = true },
   { "DrKJeff16/wezterm-types", opt = true },
 })
+require("paq").install()
 
 local ok, lz = pcall(require, "lz.n")
 if ok then
