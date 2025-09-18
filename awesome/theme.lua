@@ -60,9 +60,9 @@ local icons = {
 
 local theme = {}
 
-theme.font = "Cozette 15"
-theme.hotkeys_font = "Cozette 9"
-theme.hotkeys_description_font = "Cozette 8"
+theme.font = "Maple Mono NF 9"
+theme.hotkeys_font = " Maple Mono NF 9"
+theme.hotkeys_description_font = "Maple Mono NF 8"
 
 theme.useless_gap = dpi(2)
 theme.border_width = dpi(1)

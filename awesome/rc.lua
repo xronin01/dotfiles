@@ -7,7 +7,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local ruled = require("ruled")
-local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 require("awful.autofocus")
@@ -59,17 +58,17 @@ awful.spawn.with_shell("nitrogen --restore")
 terminal = os.getenv("TERMCMD") or "xterm"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
-applauncher = function()
-  menubar.show()
-  -- awful.spawn(terminal .. " --class=launcher -e ~/sway-launcher-desktop/sway-launcher-desktop.sh", {
-  --   floating = true,
-  --   sticky = true,
-  --   width = 480,
-  --   height = 480,
-  --   placement = awful.placement.centered,
-  --   -- titlebars_enabled = false,
-  -- })
-end
+
+--- Menubar
+local menubar = require("launcher")
+menubar.utils.terminal = terminal
+-- menubar.show_categories = false
+-- menubar.geometry = {
+--   x = (awful.screen.focused().geometry.width - 500) / 2,
+--   y = (awful.screen.focused().geometry.height - 500) / 2,
+--   width = 500,
+--   height = 500,
+-- }
 
 --- Menu
 myawesomemenu = {
@@ -93,7 +92,12 @@ mymainmenu = awful.menu({
   items = {
     { "awesome", myawesomemenu, beautiful.awesome_icon },
     { "terminal", terminal },
-    { "launcher", applauncher },
+    {
+      "launcher",
+      function()
+        menubar.show()
+      end,
+    },
   },
 })
 
@@ -223,7 +227,7 @@ awful.keyboard.append_global_keybindings({
     awful.screen.focused().mypromptbox:run()
   end, { description = "run prompt", group = "launcher" }),
   awful.key({ modkey }, "d", function()
-    applauncher()
+    menubar.show()
   end, { description = "app launcher", group = "launcher" }),
 
   awful.key({ modkey, "Shift" }, "n", function()

@@ -1,7 +1,7 @@
 general.import = ["./catppuccin-mocha.toml"]
 
-# [font]
-# normal = { family = "Cozette" }
+[font]
+normal = { family = "Maple Mono NF" }
 
 [window]
 # opacity = 0.5

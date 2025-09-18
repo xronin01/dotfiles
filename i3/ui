@@ -26,7 +26,7 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
 
-font pango:Cozette 15
+font pango:Maple Mono NF 9
 gaps inner 10
 
 # target                 title     bg    text   indicator  border

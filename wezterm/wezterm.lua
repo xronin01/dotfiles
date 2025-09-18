@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Mocha"
-config.font = wezterm.font("Cozette")
+config.font = wezterm.font("Maple Mono NF")
 config.front_end = "WebGpu"
 config.enable_wayland = false
 config.enable_scroll_bar = true
