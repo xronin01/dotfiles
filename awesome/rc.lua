@@ -1,4 +1,5 @@
 pcall(require, "luarocks.loader")
+-- pcall(require, "lux.loader")
 
 --- libraries
 local gears = require("gears")
@@ -7,6 +8,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
 local ruled = require("ruled")
+-- local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 require("awful.autofocus")
@@ -25,50 +27,11 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
 
 --- Wallpaper
 awful.spawn.with_shell("nitrogen --restore")
--- beautiful.wallpaper = ""
--- -- local geometry = s.geometry
--- -- if geometry.width > geometry.height then
--- --   -- landscape wallpaper
--- --   beautiful.wallpaper = ""
--- -- else
--- --   -- portrait wallpaper
--- --   beautiful.wallpaper = ""
--- -- end
---
--- screen.connect_signal("request::wallpaper", function(s)
---   -- gears.wallpaper.maximized(beautiful.wallpaper)
---   awful.wallpaper({
---     screen = s,
---     widget = {
---       {
---         image = beautiful.wallpaper,
---         upscale = true,
---         downscale = true,
---         widget = wibox.widget.imagebox,
---       },
---       valign = "center",
---       halign = "center",
---       tiled = false,
---       widget = wibox.container.tile,
---     },
---   })
--- end)
 
 --- Default programs
 terminal = os.getenv("TERMCMD") or "xterm"
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
-
---- Menubar
-local menubar = require("launcher")
-menubar.utils.terminal = terminal
--- menubar.show_categories = false
--- menubar.geometry = {
---   x = (awful.screen.focused().geometry.width - 500) / 2,
---   y = (awful.screen.focused().geometry.height - 500) / 2,
---   width = 500,
---   height = 500,
--- }
 
 --- Menu
 myawesomemenu = {
@@ -79,7 +42,7 @@ myawesomemenu = {
     end,
   },
   { "manual", terminal .. " -e man awesome" },
-  { "config", editor_cmd .. " " .. awesome.conffile },
+  { "edit config", editor_cmd .. " " .. awesome.conffile },
   { "restart", awesome.restart },
   {
     "quit",
@@ -91,17 +54,15 @@ myawesomemenu = {
 mymainmenu = awful.menu({
   items = {
     { "awesome", myawesomemenu, beautiful.awesome_icon },
-    { "terminal", terminal },
-    {
-      "launcher",
-      function()
-        menubar.show()
-      end,
-    },
+    { "open terminal", terminal },
   },
 })
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
+
+--- Menubar
+-- menubar.utils.terminal = terminal
+-- menubar.show_categories = false
 
 --- Layouts
 tag.connect_signal("request::default_layouts", function()
@@ -227,7 +188,8 @@ awful.keyboard.append_global_keybindings({
     awful.screen.focused().mypromptbox:run()
   end, { description = "run prompt", group = "launcher" }),
   awful.key({ modkey }, "d", function()
-    menubar.show()
+    -- menubar.show()
+    awful.spawn("rofi -show drun")
   end, { description = "app launcher", group = "launcher" }),
 
   awful.key({ modkey, "Shift" }, "n", function()
