@@ -115,7 +115,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     },
   })
 
-  s.mytextclock = wibox.widget.textclock(" %d-%m-%y %H:%M ")
+  s.mytextclock = wibox.widget.textclock(" 󰃰 %d-%m-%y %H:%M ")
 
   s.mysystray = wibox.widget.systray()
 

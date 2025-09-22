@@ -487,7 +487,7 @@ return {
     end,
     after = function()
       require("fzf-lua").setup({
-        -- {"skim"}
+        -- { "skim" },
       })
     end,
   },

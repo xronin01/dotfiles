@@ -11,10 +11,10 @@ alias \
   rm="rm --interactive" \
   ..="cd .." \
   ...="cd ../.." \
+  ....="cd ../../.." \
   cat="bat -pp" \
   bc="bc-gh" \
   dc="dc-gh" \
   vim="$EDITOR" \
-  news="newsboat" \
   cls="clear" \
   rompatcher="rom-patcher"
