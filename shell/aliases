@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 alias \
-  ls="eza --icons --group-directories-first" \
-  ll="ls -l --git" \
+  ls="eza --icons --git --group-directories-first" \
+  ll="ls -l" \
   la="ll -a" \
-  tree="ls --tree --level=2" \
+  tree="ls --tree --level=3" \
   grep="grep --color=auto" \
   cp="cp --interactive" \
   mv="mv --interactive" \
@@ -16,5 +16,6 @@ alias \
   bc="bc-gh" \
   dc="dc-gh" \
   vim="$EDITOR" \
+  wget="wcurl" \
   cls="clear" \
   rompatcher="rom-patcher"

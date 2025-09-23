@@ -18,18 +18,3 @@ function ex () {
     echo "'$1' is not a valid file"
   fi
 }
-
-function cget () {
-  if [ $# -eq 0 ]; then
-    echo -e "cget: missing URL\nUsage: cget [OPTION]... [URL]..."
-    return 2
-  elif [ $# -eq 1 ]; then
-    curl -L -O "$1"
-  else
-    args=()
-    for url in "$@"; do
-      args+=("-O" "$url")
-    done
-    curl --parallel -L "${args[@]}"
-  fi
-}
