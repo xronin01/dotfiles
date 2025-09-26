@@ -8,10 +8,16 @@ setopt re_match_pcre
 
 ## zsh-vi-mode config
 function zvm_config() {
-  ZVM_INIT_MODE=sourcing
+  # ZVM_INIT_MODE=sourcing
   ZVM_SYSTEM_CLIPBOARD_ENABLED=true
   ZVM_VI_HIGHLIGHT_BACKGROUND=#313244
   ZVM_VI_HIGHLIGHT_FOREGROUND=#cdd6f4
+}
+
+function zvm_after_init() {
+  # zvm_bindkey viins "^R" fzf-history-widget
+  # zvm_bindkey viins "^R" skim-history-widget
+  zvm_bindkey viins "^R" tv-shell-history
 }
 
 plug "Aloxaf/fzf-tab"
