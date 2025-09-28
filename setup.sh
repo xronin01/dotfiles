@@ -5,18 +5,13 @@ if [ -n "$TERMUX_APP_PID" ]; then
 fi
 
 ## Cozette font
-# release_info=$(curl -s https://api.github.com/repos/the-moonwitch/Cozette/releases/latest)
-# font_ttf=$(echo "$release_info" | grep -o "https://github.com/the-moonwitch/Cozette/releases/download/v.*/CozetteVector.ttf")
-# font_otb=$(echo "$release_info" | grep -o "https://github.com/the-moonwitch/Cozette/releases/download/v.*/cozette_hidpi.otb")
-# curl --progress-bar -L -O "$font_ttf" -O "$font_otb"
+# curl --progress-bar -LO https://github.com/the-moonwitch/Cozette/releases/latest/download/CozetteVector.ttf -O https://github.com/the-moonwitch/Cozette/releases/latest/download/cozette_hidpi.otb
 # install -v -m 600 -D CozetteVector.ttf "$HOME/.termux/font.ttf"
 # install -v -m 600 -D cozette_hidpi.otb "$HOME/.local/share/fonts/cozette_hidpi.otb"
 # rm -rfv CozetteVector.ttf cozette_hidpi.otb
 
 ## Maple font
-release_info=$(curl -s https://api.github.com/repos/subframe7536/maple-font/releases/latest)
-font_zip=$(echo "$release_info" | grep -o "https://github.com/subframe7536/maple-font/releases/download/v.*/MapleMono-NF-unhinted.zip" | head -n 1)
-curl --progress-bar -L -O "$font_zip"
+curl --progress-bar -LO https://github.com/subframe7536/maple-font/releases/latest/download/MapleMono-NF-unhinted.zip
 unzip -d font MapleMono-NF-unhinted.zip
 install -v -m 600 -D "./font/MapleMono-NF-Regular.ttf" "$HOME/.termux/font.ttf"
 install -v -m 600 -D "./font/MapleMono-NF-Regular.ttf" "$HOME/.local/share/fonts/MapleMono-NF-Regular.ttf"
@@ -28,7 +23,6 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "$0")" && pwd)
 update_symlink() {
   file=$1
   destination=$2
-
   ln -sf "$SCRIPT_DIR/$file" "$destination"
 }
 
