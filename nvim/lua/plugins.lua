@@ -16,7 +16,7 @@ return {
     after = function()
       if vim.g.colors_name:find("catppuccin") then
         require("bufferline").setup({
-          highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
+          highlights = require("catppuccin.special.bufferline").get_theme({
             styles = {
               "no_italic",
               "bold",

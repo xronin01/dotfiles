@@ -20,7 +20,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export COMPOSER_HOME="$XDG_DATA_HOME/composer"
 export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno"
-export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$COMPOSER_HOME/vendor/bin:$DENO_INSTALL_ROOT/bin"
+export PATH="$PATH:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$COMPOSER_HOME/vendor/bin:$DENO_INSTALL_ROOT/bin:$XDG_DATA_HOME/bob/nvim-bin"
 
 export EDITOR=nvim
 export VISUAL=$EDITOR
