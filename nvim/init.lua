@@ -39,6 +39,7 @@ require("paq")({
   { "neovim/nvim-lspconfig", opt = true },
   { "folke/lazydev.nvim", opt = true },
   { "folke/trouble.nvim", opt = true },
+  { "folke/sidekick.nvim", opt = true },
   { "stevearc/conform.nvim", opt = true },
   { "mfussenegger/nvim-lint", opt = true },
   { "mfussenegger/nvim-dap", opt = true },
@@ -59,7 +60,6 @@ require("paq")({
   { "LuaCATS/love2d", opt = true },
   { "DrKJeff16/wezterm-types", opt = true },
 })
-require("paq").install()
 
 local ok, lz = pcall(require, "lz.n")
 if ok then
