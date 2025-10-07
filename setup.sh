@@ -27,6 +27,7 @@ update_symlink() {
 }
 
 mkdir -pv "$HOME/.config"
+mkdir -pv "$HOME/.cache/zsh"
 mkdir -pv "$HOME/.local/bin"
 mkdir -pv "$HOME/.vnc"
 
