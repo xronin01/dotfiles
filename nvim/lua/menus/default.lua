@@ -5,7 +5,7 @@ return {
       local ok, conform = pcall(require, "conform")
 
       if ok then
-        conform.format({ lsp_fallback = true })
+        conform.format()
       else
         vim.lsp.buf.format()
       end
@@ -16,7 +16,7 @@ return {
   {
     name = "Code Actions",
     cmd = vim.lsp.buf.code_action,
-    rtxt = "<leader>ca",
+    rtxt = "gra",
   },
 
   { name = "separator" },
@@ -63,7 +63,7 @@ return {
       local cmd = "cd " .. old_buf_dir
 
       vim.cmd("enew")
-      vim.fn.termopen({ vim.o.shell, "-c", cmd .. " ; " .. vim.o.shell })
+      vim.fn.jobstart({ vim.o.shell, "-c", cmd .. " ; " .. vim.o.shell }, { term = true })
     end,
   },
 

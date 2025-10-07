@@ -14,7 +14,7 @@ return {
   {
     name = "Go to Implementation",
     cmd = vim.lsp.buf.implementation,
-    rtxt = "gi",
+    rtxt = "gri",
   },
 
   { name = "separator" },
@@ -22,13 +22,7 @@ return {
   {
     name = "Show signature help",
     cmd = vim.lsp.buf.signature_help,
-    rtxt = "<leader>sh",
-  },
-
-  {
-    name = "Show References",
-    cmd = vim.lsp.buf.references,
-    rtxt = "<leader>sr",
+    rtxt = "<C-S>",
   },
 
   {
@@ -43,6 +37,12 @@ return {
     rtxt = "<leader>wr",
   },
 
+  {
+    name = "Show References",
+    cmd = vim.lsp.buf.references,
+    rtxt = "grr",
+  },
+
   { name = "separator" },
 
   {
@@ -51,7 +51,7 @@ return {
       local ok, conform = pcall(require, "conform")
 
       if ok then
-        conform.format({ lsp_fallback = true })
+        conform.format()
       else
         vim.lsp.buf.format()
       end
@@ -62,6 +62,6 @@ return {
   {
     name = "Code Actions",
     cmd = vim.lsp.buf.code_action,
-    rtxt = "<leader>ca",
+    rtxt = "gra",
   },
 }
