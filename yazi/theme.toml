@@ -4,6 +4,10 @@ dark = "catppuccin-mocha"
 [mgr]
 cwd = { fg = "#89b4fa" }
 
+[tabs]
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
 [status]
 overall = { bg = "#181825" }
 sep_left = { open = "█", close = "█" }

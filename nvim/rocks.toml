@@ -41,7 +41,7 @@ minty = { git = "nvzone/minty", opt = true }
 "gitsigns.nvim" = { version = "1.0.2", opt = true }
 "smart-splits.nvim" = { version = "2.0.3", opt = true }
 "yazi.nvim" = { version = "13.0.0", opt = true }
-fzf-lua = { version = "0.0.2275", opt = true }
+fzf-lua = { version = "0.0.2277", opt = true }
 zincoxide = { git = "thunder-coding/zincoxide", opt = true }
 "sc-im.nvim" = { git = "DAmesberger/sc-im.nvim", config = false }
 "translate.nvim" = { git = "uga-rosa/translate.nvim", opt = true }
