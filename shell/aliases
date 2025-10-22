@@ -1,10 +1,20 @@
 #!/usr/bin/env sh
 
+if command -v eza > /dev/null; then
+  alias \
+    ls="eza --icons --git --group-directories-first" \
+    tree="ls --tree --level=3"
+else
+  alias ls="ls --color=auto --group-directories-first"
+fi
+
+if command -v bat > /dev/null; then
+  alias cat="bat -pp"
+fi
+
 alias \
-  ls="eza --icons --git --group-directories-first" \
   ll="ls -l" \
   la="ll -a" \
-  tree="ls --tree --level=3" \
   grep="grep --color=auto" \
   cp="cp --interactive" \
   mv="mv --interactive" \
@@ -12,10 +22,9 @@ alias \
   ..="cd .." \
   ...="cd ../.." \
   ....="cd ../../.." \
-  cat="bat -pp" \
   bc="bc-gh" \
   dc="dc-gh" \
-  vim="$EDITOR" \
+  vim="nvim" \
   wget="wcurl" \
   cls="clear" \
   rompatcher="rom-patcher"

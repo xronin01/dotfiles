@@ -4,6 +4,7 @@ general.import = ["./catppuccin-mocha.toml"]
 normal = { family = "Maple Mono NF" }
 
 [window]
+padding = { x = 2, y = 0 }
 # opacity = 0.5
 
 [scrolling]

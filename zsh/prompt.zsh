@@ -1,5 +1,5 @@
 autoload -Uz vcs_info
-autoload -U colors && colors
+autoload -Uz colors && colors
 
 zstyle ':vcs_info:*' enable git
 
