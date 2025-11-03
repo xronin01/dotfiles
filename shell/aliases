@@ -27,4 +27,4 @@ alias \
   vim="nvim" \
   wget="wcurl" \
   cls="clear" \
-  rompatcher="rom-patcher"
+  rompatcher="RomPatcher"

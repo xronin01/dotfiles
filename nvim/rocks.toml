@@ -6,6 +6,7 @@ luvit-meta = { git = "Bilal2453/luvit-meta", opt = true }
 toml-edit-lua-ls-addon = { git = "lumen-oss/toml-edit-lua-ls-addon", opt = true }
 xmake-luals-addon = { git = "xmake-io/xmake-luals-addon", opt = true }
 love2d = { git = "LuaCATS/love2d", opt = true }
+luanti-ide-helper = { git = "Voxrame/luanti-ide-helper", opt = true }
 wezterm-types = { git = "DrKJeff16/wezterm-types", opt = true }
 
 [plugins]
@@ -18,8 +19,9 @@ wezterm-types = { git = "DrKJeff16/wezterm-types", opt = true }
 "rocks-treesitter.nvim" = "1.3.1"
 
 "mason.nvim" = "2.0.1"
-"lazydev.nvim" = { version = "scm", opt = true }
-"sidekick.nvim" = { git = "folke/sidekick.nvim", rev = "v2.0.0", opt = true }
+# "lazydev.nvim" = { version = "scm", opt = true }
+"lazydev.nvim" = { git = "folke/lazydev.nvim", rev = "v1.10.0", opt = true }
+"sidekick.nvim" = { git = "folke/sidekick.nvim", rev = "v2.1.0", opt = true }
 "conform.nvim" = { version = "9.1.0", opt = true }
 nvim-lint = { version = "scm", opt = true }
 # nvim-dap = { version = "0.10.0", opt = true }
@@ -30,7 +32,7 @@ one-small-step-for-vimkind = { version = "scm", opt = true }
 # friendly-snippets = { version = "scm", opt = true }
 friendly-snippets = { git = "rafamadriz/friendly-snippets", opt = true }
 nvim-autopairs = { version = "scm", opt = true }
-nvim-surround = { git = "kylechui/nvim-surround", rev = "v3.1.6", opt = true }
+nvim-surround = { version = "3.1.7", opt = true }
 "lualine.nvim" = { version = "scm", opt = true }
 "bufferline.nvim" = { version = "4.9.1", opt = true }
 menu = { version = "scm", opt = true }
@@ -41,7 +43,7 @@ minty = { git = "nvzone/minty", opt = true }
 "gitsigns.nvim" = { version = "1.0.2", opt = true }
 "smart-splits.nvim" = { version = "2.0.3", opt = true }
 "yazi.nvim" = { version = "13.0.0", opt = true }
-fzf-lua = { version = "0.0.2277", opt = true }
+fzf-lua = { version = "0.0.2296", opt = true }
 zincoxide = { git = "thunder-coding/zincoxide", opt = true }
 "sc-im.nvim" = { git = "DAmesberger/sc-im.nvim", config = false }
 "translate.nvim" = { git = "uga-rosa/translate.nvim", opt = true }
