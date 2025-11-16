@@ -16,13 +16,14 @@ alias \
   ll="ls -l" \
   la="ll -a" \
   grep="grep --color=auto" \
+  diff="diff --color=auto" \
   cp="cp --interactive" \
   mv="mv --interactive" \
   rm="rm --interactive" \
   ..="cd .." \
   ...="cd ../.." \
   ....="cd ../../.." \
-  bc="bc-gh" \
+  bc="bc-gh --mathlib" \
   dc="dc-gh" \
   vim="nvim" \
   wget="wcurl" \
