@@ -11,16 +11,15 @@ wezterm-types = { git = "DrKJeff16/wezterm-types", opt = true }
 
 [plugins]
 "rocks.nvim" = "2.46.1"
-"rocks-git.nvim" = "2.5.6"
+"rocks-git.nvim" = "2.5.7"
 "rocks-dev.nvim" = "1.8.1"
 "rocks-edit.nvim" = "scm"
 "rocks-config.nvim" = "3.1.2"
 "rocks-lazy.nvim" = "1.2.2"
 "rocks-treesitter.nvim" = "1.3.1"
 
-"mason.nvim" = "2.0.1"
-# "lazydev.nvim" = { version = "scm", opt = true }
-"lazydev.nvim" = { git = "folke/lazydev.nvim", rev = "v1.10.0", opt = true }
+"mason.nvim" = "2.1.0"
+"lazydev.nvim" = { version = "1.10.0", opt = true }
 "sidekick.nvim" = { git = "folke/sidekick.nvim", rev = "v2.1.0", opt = true }
 "conform.nvim" = { version = "9.1.0", opt = true }
 nvim-lint = { version = "scm", opt = true }
@@ -29,8 +28,7 @@ nvim-dap = { git = "mfussenegger/nvim-dap", opt = true }
 nvim-dap-view = { git = "igorlfs/nvim-dap-view", opt = true }
 one-small-step-for-vimkind = { version = "scm", opt = true }
 "blink.cmp" = { git = "saghen/blink.cmp", rev = "v1.8.0", opt = true }
-# friendly-snippets = { version = "scm", opt = true }
-friendly-snippets = { git = "rafamadriz/friendly-snippets", opt = true }
+friendly-snippets = { version = "scm", opt = true }
 nvim-autopairs = { version = "scm", opt = true }
 nvim-surround = { version = "3.1.7", opt = true }
 "lualine.nvim" = { version = "scm", opt = true }
@@ -41,30 +39,29 @@ minty = { git = "nvzone/minty", opt = true }
 "indent-blankline.nvim" = { version = "3.9.0", opt = true }
 "nvim-colorizer.lua" = { version = "scm", opt = true }
 "gitsigns.nvim" = { version = "1.0.2", opt = true }
-"smart-splits.nvim" = { version = "2.0.3", opt = true }
-"yazi.nvim" = { version = "13.0.0", opt = true }
-fzf-lua = { version = "0.0.2302", opt = true }
+"smart-splits.nvim" = { version = "2.0.5", opt = true }
+"yazi.nvim" = { version = "13.1.0", opt = true }
+fzf-lua = { version = "0.0.2374", opt = true }
 zincoxide = { git = "thunder-coding/zincoxide", opt = true }
 "sc-im.nvim" = { git = "DAmesberger/sc-im.nvim", config = false }
 "translate.nvim" = { git = "uga-rosa/translate.nvim", opt = true }
 "hex.nvim" = { git = "RaafatTurki/hex.nvim" }
 
 ## Tree-sitter parsers
-tree-sitter-cpp = "0.0.46"
-tree-sitter-rust = "0.0.51"
+tree-sitter-cpp = "0.0.49"
+tree-sitter-rust = "0.0.55"
 tree-sitter-kotlin = "0.0.34"
 tree-sitter-elixir = "0.0.43"
 tree-sitter-teal = "0.0.35"
-tree-sitter-javascript = "0.0.39"
-tree-sitter-bash = "0.0.44"
-tree-sitter-html = "0.0.37"
-tree-sitter-css = "0.0.38"
-# tree-sitter-latex = "0.0.38"
+tree-sitter-javascript = "0.0.41"
+tree-sitter-bash = "0.0.49"
+tree-sitter-html = "0.0.40"
+tree-sitter-css = "0.0.39"
+# tree-sitter-latex = "0.0.41"
 tree-sitter-typst = "0.0.37"
 
 ## Colorschemes
-# catpuccin = "scm"
-catppuccin = { git = "catppuccin/nvim" }
+catpuccin = "scm"
 "kanagawa.nvim" = "scm"
 
 # [dev]
