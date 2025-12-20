@@ -27,6 +27,7 @@ update_symlink() {
 }
 
 mkdir -pv "$HOME/.config"
+mkdir -pv "$HOME/.config/emacs"
 mkdir -pv "$HOME/.cache/zsh"
 mkdir -pv "$HOME/.local/bin"
 mkdir -pv "$HOME/.vnc"
@@ -50,3 +51,4 @@ update_symlink rofi "$HOME/.config/"
 update_symlink wezterm "$HOME/.config/"
 update_symlink alacritty "$HOME/.config/"
 update_symlink mpv "$HOME/.config/"
+update_symlink emacs/init.el "$HOME/.config/emacs/init.el"

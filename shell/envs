@@ -12,6 +12,7 @@ if [ -n "$TERMUX_APP_PID" ]; then
   export XDG_DATA_DIRS="$PREFIX/share"
   # export XDG_RUNTIME_DIR="$PREFIX/var/run/user"
   export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session awesome"
+  # export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session emacs -mm"
 fi
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
