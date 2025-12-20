@@ -30,7 +30,7 @@ one-small-step-for-vimkind = { version = "scm", opt = true }
 "blink.cmp" = { git = "saghen/blink.cmp", rev = "v1.8.0", opt = true }
 friendly-snippets = { version = "scm", opt = true }
 nvim-autopairs = { version = "scm", opt = true }
-nvim-surround = { version = "3.1.7", opt = true }
+nvim-surround = { version = "3.1.8", opt = true }
 "lualine.nvim" = { version = "scm", opt = true }
 "bufferline.nvim" = { version = "4.9.1", opt = true }
 menu = { version = "scm", opt = true }
