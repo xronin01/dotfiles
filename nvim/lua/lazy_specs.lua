@@ -438,11 +438,11 @@ return {
       { "<leader>fh", "<cmd>FzfLua helptags<cr>", desc = "FzfLua helptags" },
       { "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "FzfLua keymaps" },
     },
-    -- after = function()
-    --   require("fzf-lua").setup({
-    --     { "skim" },
-    --   })
-    -- end,
+    after = function()
+      require("fzf-lua").setup({
+        { "skim" },
+      })
+    end,
   },
   {
     "zincoxide",

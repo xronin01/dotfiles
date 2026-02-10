@@ -7,11 +7,12 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # export XDG_RUNTIME_DIR="/run/user/$UID"
 
 if [ -n "$TERMUX_APP_PID" ]; then
-  export TERMINFO="$PREFIX/share/terminfo"
+  # export TERMINFO="$PREFIX/share/terminfo"
   export XDG_CONFIG_DIRS="$PREFIX/etc/xdg"
   export XDG_DATA_DIRS="$PREFIX/share"
   # export XDG_RUNTIME_DIR="$PREFIX/var/run/user"
   export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session awesome"
+  # export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session oxwm"
   # export TERMUX_X11_XSTARTUP="dbus-launch --exit-with-session emacs -mm"
 fi
 

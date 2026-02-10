@@ -14,9 +14,8 @@ function zvm_config() {
 }
 
 function zvm_after_init() {
-  zvm_bindkey viins "^R" fzf-history-widget
-  # zvm_bindkey viins "^R" skim-history-widget
-  # zvm_bindkey viins "^R" tv-shell-history
+  # zvm_bindkey viins "^R" fzf-history-widget
+  zvm_bindkey viins "^R" skim-history-widget
 }
 
 plug "Aloxaf/fzf-tab"

@@ -11,7 +11,7 @@ source "$ZDOTDIR/functions.zsh"
 source "$ZDOTDIR/plugins.zsh"
 
 ## Shell integrations
-eval "$(fzf --zsh)"
-# eval "$(tv init zsh)"
+# eval "$(fzf --zsh)"
+eval "$(sk --shell zsh --shell-bindings)"
 eval "$(zoxide init zsh --cmd cd)"
 # eval "$(starship init zsh)"
