@@ -16,21 +16,6 @@ return {
     end,
   },
   {
-    "sidekick.nvim",
-    cmd = "Sidekick",
-    keys = {
-      { "<leader>aa", "<cmd>Sidekick cli toggle<cr>", desc = "Sidekick Toggle CLI" },
-    },
-    after = function()
-      require("sidekick").setup({
-        nes = { enabled = false },
-        cli = {
-          mux = { enabled = true },
-        },
-      })
-    end,
-  },
-  {
     "conform.nvim",
     event = "BufWritePre",
     cmd = "ConformInfo",
@@ -226,6 +211,11 @@ return {
             },
           },
         },
+        -- fuzzy = {
+        --   prebuilt_binaries = {
+        --     download = false,
+        --   }
+        -- }
       })
     end,
   },
@@ -243,9 +233,6 @@ return {
   {
     "nvim-surround",
     event = "DeferredUIEnter",
-    after = function()
-      require("nvim-surround").setup()
-    end,
   },
   {
     "lualine.nvim",
