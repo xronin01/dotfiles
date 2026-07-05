@@ -510,3 +510,6 @@ end)
 client.connect_signal("mouse::enter", function(c)
   c:activate({ context = "mouse_enter", raise = false })
 end)
+
+-- Autostart applications
+awful.spawn.with_shell('picom --backend xrender --config "$HOME/.config/picom/picom.conf" -b')

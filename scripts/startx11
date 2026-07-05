@@ -13,8 +13,8 @@ pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth
 ## Set environment variables
 export PULSE_SERVER=127.0.0.1
 export MESA_VK_WSI_DEBUG=sw
-export LIBGL_KOPPER_DRI2=1
-export MESA_LOADER_DRIVER_OVERRIDE=zink
+# export LIBGL_KOPPER_DRI2=1
+# export MESA_LOADER_DRIVER_OVERRIDE=zink
 # export GALLIUM_DRIVER=zink
 # export GALLIUM_DRIVER=virpipe
 # export MESA_GL_VERSION_OVERRIDE=3.1

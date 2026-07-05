@@ -35,7 +35,7 @@ return {
         ktlint = { "kotlin" },
         mix = { "elixir" },
         stylua = { "lua" },
-        deno_fmt = { "javascript", "typescript", "markdown", "html", "css", "json", "jsonc", "yaml" },
+        -- deno_fmt = { "javascript", "typescript", "markdown", "html", "css", "json", "jsonc", "yaml" },
         ruff_format = { "python" },
         php_cs_fixer = { "php" },
         -- shfmt = { "sh", "bash" },

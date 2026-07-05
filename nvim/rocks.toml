@@ -1,5 +1,5 @@
 [rocks]
-nvim-lspconfig = { version = "2.7.0", config = false }
+nvim-lspconfig = { version = "2.10.0", config = false }
 
 ## Luals addons
 luvit-meta = { git = "Bilal2453/luvit-meta", opt = true }
@@ -7,31 +7,31 @@ toml-edit-lua-ls-addon = { git = "lumen-oss/toml-edit-lua-ls-addon", opt = true 
 xmake-luals-addon = { git = "xmake-io/xmake-luals-addon", opt = true }
 love2d = { git = "LuaCATS/love2d", opt = true }
 luanti-ide-helper = { git = "Voxrame/luanti-ide-helper", opt = true }
-wezterm-types = { version = "3.0.1", opt = true }
+wezterm-types = { version = "4.3.0", opt = true }
 
 [plugins]
-"rocks.nvim" = "2.47.4"
+"rocks.nvim" = "2.49.0"
+"rocks-treesitter.nvim" = "1.3.1"
 "rocks-git.nvim" = "2.5.10"
 "rocks-dev.nvim" = "1.8.1"
 "rocks-edit.nvim" = "scm"
 "rocks-config.nvim" = "3.2.0"
 "rocks-lazy.nvim" = "1.2.2"
-"rocks-treesitter.nvim" = "1.3.1"
 
-"mason.nvim" = "2.2.1"
-"lazydev.nvim" = { version = "scm", opt = true }
-# "lazydev.nvim" = { version = "1.10.0", opt = true }
+"mason.nvim" = "2.3.1"
+"lazydev.nvim" = { version = "1.10.0", opt = true }
 "conform.nvim" = { version = "9.1.0", opt = true }
 nvim-lint = { version = "scm", opt = true }
 # nvim-dap = { version = "0.10.0", opt = true }
 nvim-dap = { git = "mfussenegger/nvim-dap", opt = true }
-nvim-dap-view = { git = "igorlfs/nvim-dap-view", rev = "v1.0.1", opt = true }
+nvim-dap-view = { git = "igorlfs/nvim-dap-view", rev = "v1.2.0", opt = true }
 one-small-step-for-vimkind = { version = "scm", opt = true }
-# "codecompanion.nvim" = { git = "olimorris/codecompanion.nvim", rev = "v19.6.0" }
-"blink.cmp" = { git = "saghen/blink.cmp", rev = "v1.10.1", opt = true }
+# "codecompanion.nvim" = { git = "olimorris/codecompanion.nvim", rev = "v19.9.0" }
+"agentic.nvim" = { git = "carlos-algms/agentic.nvim" }
+"blink.cmp" = { git = "saghen/blink.cmp", rev = "v1.10.2", opt = true }
 friendly-snippets = { version = "scm", opt = true }
 nvim-autopairs = { version = "scm", opt = true }
-nvim-surround = { version = "4.0.4", opt = true }
+nvim-surround = { version = "4.0.5", opt = true }
 "lualine.nvim" = { version = "scm", opt = true }
 "bufferline.nvim" = { version = "4.9.1", opt = true }
 menu = { version = "scm", opt = true }
@@ -40,13 +40,13 @@ minty = { git = "nvzone/minty", opt = true }
 "indent-blankline.nvim" = { version = "3.9.1", opt = true }
 "nvim-colorizer.lua" = { version = "scm", opt = true }
 "gitsigns.nvim" = { version = "2.1.0", opt = true }
-"smart-splits.nvim" = { version = "2.0.5", opt = true }
-"yazi.nvim" = { version = "13.1.5", opt = true }
-fzf-lua = { version = "0.0.2556", opt = true }
-zincoxide = { git = "thunder-coding/zincoxide", opt = true }
-"sc-im.nvim" = { git = "DAmesberger/sc-im.nvim", config = false }
-"translate.nvim" = { git = "uga-rosa/translate.nvim", opt = true }
-"hex.nvim" = { git = "RaafatTurki/hex.nvim" }
+"smart-splits.nvim" = { version = "2.1.0", opt = true }
+"yazi.nvim" = { version = "13.7.0", opt = true }
+fzf-lua = { version = "0.0.2674", opt = true }
+# zincoxide = { git = "thunder-coding/zincoxide", opt = true }
+# "sc-im.nvim" = { git = "DAmesberger/sc-im.nvim", config = false }
+# "translate.nvim" = { git = "uga-rosa/translate.nvim", opt = true }
+# "hex.nvim" = { git = "RaafatTurki/hex.nvim" }
 
 ## Tree-sitter parsers
 tree-sitter-cpp = "0.0.50"
@@ -63,7 +63,7 @@ tree-sitter-css = "0.0.39"
 tree-sitter-typst = "0.0.39"
 
 ## Colorschemes
-catpuccin = "scm"
+catpuccin = "2.0.0"
 "kanagawa.nvim" = "scm"
 
 # [dev]
